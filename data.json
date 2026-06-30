@@ -1,0 +1,23 @@
+[
+  {
+    "pseudo": "Notch",
+    "nomRP": "Le Créateur",
+    "age": "Inconnu",
+    "faction": "Dieux de l'Olympe",
+    "description": "L'entité à l'origine de ce monde. Il observe les mortels depuis les nuages."
+  },
+  {
+    "pseudo": "jeb_",
+    "nomRP": "Jens Bergensten",
+    "age": "32 ans",
+    "faction": "Guilde des Architectes",
+    "description": "Un maître bâtisseur capable de construire des cités entières en un clin d'œil."
+  },
+  {
+    "pseudo": "Squeezie",
+    "nomRP": "Lucas Hauchard",
+    "age": "28 ans",
+    "faction": "Les Indépendants",
+    "description": "Un vagabond cherchant à faire fortune dans les mines d'or."
+  }
+]
