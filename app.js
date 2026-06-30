@@ -7,35 +7,39 @@ fetch('data.json')
     .then(response => response.json())
     .then(data => {
         charactersData = data;
-        displayCharacters(charactersData); // Afficher tout au chargement
+        displayCharacters(charactersData);
     })
     .catch(error => console.error("Erreur de chargement des données :", error));
 
 // 2. Fonction pour afficher les fiches
 function displayCharacters(characters) {
-    container.innerHTML = ''; // On vide le conteneur
+    container.innerHTML = '';
 
     if(characters.length === 0) {
-        container.innerHTML = '<p>Aucun personnage trouvé...</p>';
+        container.innerHTML = '<p style="padding: 20px; font-family: Satoshi; grid-column: 1 / -1;">Aucun dossier trouvé pour cette recherche.</p>';
         return;
     }
 
-    characters.forEach(char => {
-        // Création de la carte (fiche)
+    characters.forEach((char, index) => {
+        // Création de la carte avec les classes de ton CSS
         const card = document.createElement('div');
-        card.className = 'card';
+        // J'utilise tes classes d'animation (kd-reveal kd-visible) pour un effet propre
+        card.className = 'card kd-reveal kd-visible'; 
+        // Effet d'apparition en cascade grâce à ton CSS
+        card.style.transitionDelay = `${(index % 3) * 0.1}s`; 
 
-        // L'URL de Minotar pour récupérer le corps en 3D
-        // Tu peux changer "armor/body" par "cube" pour juste la tête
-        const skinUrl = `https://minotar.net/armor/body/${char.pseudo}/150.png`;
+        const skinUrl = `https://minotar.net/armor/body/${char.pseudo}/200.png`;
 
         card.innerHTML = `
-            <img src="${skinUrl}" alt="Skin de ${char.pseudo}">
-            <h2>${char.nomRP}</h2>
-            <p class="pseudo">Pseudo MC: ${char.pseudo}</p>
-            <p class="info"><strong>Âge:</strong> ${char.age}</p>
-            <p class="info"><strong>Faction:</strong> ${char.faction}</p>
-            <p class="desc">${char.description}</p>
+            <img src="${skinUrl}" alt="Skin de ${char.pseudo}" class="card-img">
+            <div class="card-cat">${char.faction}</div>
+            <h2 class="card-title">${char.nomRP}</h2>
+            <p class="card-excerpt">${char.description}</p>
+            <div class="card-byline">
+                PSEUDO MC: <strong>${char.pseudo}</strong> <br>
+                ÂGE: <strong>${char.age}</strong>
+            </div>
+            <div class="card-btn" style="cursor: pointer;">Consulter</div>
         `;
 
         container.appendChild(card);
@@ -46,12 +50,10 @@ function displayCharacters(characters) {
 searchBar.addEventListener('input', (e) => {
     const searchString = e.target.value.toLowerCase();
 
-    // Filtrer par pseudo OU par nom RP
     const filteredCharacters = charactersData.filter(char => {
         return char.nomRP.toLowerCase().includes(searchString) || 
                char.pseudo.toLowerCase().includes(searchString);
     });
 
-    // Mettre à jour l'affichage avec les résultats filtrés
     displayCharacters(filteredCharacters);
 });
