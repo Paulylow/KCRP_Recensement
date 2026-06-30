@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- En-tête type "Journal Officiel" -->
     <header class="mast">
         <div class="mast-top">
             <span>Registre National</span>
@@ -20,6 +21,7 @@
         </div>
     </header>
 
+    <!-- Bandeau défilant (Ticker) -->
     <div class="ticker">
         <div class="ticker-label">EN DIRECT</div>
         <div class="ticker-track">
@@ -30,17 +32,57 @@
         </div>
     </div>
 
+    <!-- Zone de recherche -->
     <div class="archive-hero">
         <h2 style="font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 24px; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 0.1em;">Rechercher un dossier</h2>
         <input type="text" id="searchBar" class="custom-search" placeholder="Entrez un Nom RP ou un Pseudo MC...">
     </div>
 
+    <!-- Contenu Principal -->
     <main class="front container">
         <div class="section-title">Citoyens Recensés</div>
         
+        <!-- Conteneur des fiches -->
         <div id="characters-container" class="cards" style="border-bottom: 3px solid var(--black);">
-            </div>
+            <!-- Le JavaScript va injecter les fiches ici -->
+        </div>
     </main>
+
+    <!-- MODAL : DOSSIER DÉTAILLÉ -->
+    <div id="dossier-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span id="close-modal" class="modal-close">&times;</span>
+            
+            <div class="modal-header">
+                <h2 class="modal-title">Dossier <em class="modal-cyan">Classifié</em></h2>
+                <div class="modal-id">ID CITOYEN: <span id="modal-id-val">#0000</span></div>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-skin">
+                    <img id="modal-skin-img" src="" alt="Skin 3D">
+                </div>
+                <div class="modal-info">
+                    <h3 id="modal-nom" class="modal-name">Nom RP</h3>
+                    <div id="modal-faction" class="modal-faction">Faction</div>
+                    
+                    <div class="modal-meta">
+                        <span>PSEUDO MC: <strong id="modal-pseudo"></strong></span>
+                        <span>ÂGE: <strong id="modal-age"></strong></span>
+                    </div>
+
+                    <div class="modal-accroche" id="modal-accroche">
+                        <!-- L'accroche s'affiche ici -->
+                    </div>
+                    
+                    <div class="modal-desc-box">
+                        <strong>Rapport Détaillé :</strong>
+                        <p id="modal-desc"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>
