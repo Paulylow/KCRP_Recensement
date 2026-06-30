@@ -78,5 +78,25 @@
     "statut": "vivant",
     "accroche": "Pas content triplé",
     "description": "Footballeur de renom jouant pour l'équipe de France et détenteur de coupe du monde, il s'est fait couper la jambe par les hommes en noir et maintenant est sur le banc."
+  },
+  {
+    "pseudo": "ShilohCloudy",
+    "nomRP": "Nanaya Medusa",
+    "age": "21 ans",
+    "faction": "Medusa",
+    "metier": "Civil, chômage",
+    "statut": "vivant",
+    "accroche": "\"Got it memorized ?\"",
+    "description": "Nanaya est un ami d'enfance de Reagan qui habitait dans un des villages humains non loin des îles de Medusa. Ils se sont rencontrés lorsque les sorcières de Medusa faisaient un tour dans son village. Les parents de Nanaya avaient décider de partir de ce village, et depuis ils ne se sont plus jamais revu, jusqu'à recemment où il reussi à envoyer une lettre à Reagan. Cette dernière lui expliquant ce qu'il s'était passer en retour, Nanaya décida de la rejoindre et de rester auprès d'elle."
+  },
+  {
+    "pseudo": "Noretsch",
+    "nomRP": "Juliendupré",
+    "age": "19 ans",
+    "faction": "Civil de Karminéa",
+    "metier": "Ecuyer à ses heures perdues",
+    "statut": "vivant",
+    "accroche": "ferme ta gueule fils de pute",
+    "description": "Juliendupré est un petit con qui vient faire chier tout le monde dans le village, surtout autour du relais de Vince (Vincent). Il essaye de se faire remarquer parce qu'il manque cruellement d'attention mais n'a pas les codes sociaux (tutoie tout le monde, interrompt des conversations etc.)."
   }
 ]
