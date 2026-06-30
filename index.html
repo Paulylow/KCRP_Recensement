@@ -200,7 +200,6 @@
   <div class="container">
     <div class="search-sec">
       <div class="search-bar">
-        <!-- MAJ : Placeholder mis à jour pour indiquer qu'on peut chercher par faction ou métier -->
         <input id="si" type="text" placeholder="Pseudo, nom, faction, métier…" autocomplete="off" />
         <button onclick="doSearch()">Rechercher</button>
       </div>
@@ -275,12 +274,13 @@
     const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     
     // Rendu 2D des skins sur la page d'accueil pour la performance
-    const cardSkin = (p) => `https://minotar.net/armor/body/${p}/150.png`;
+    const getCardImg = (p) => p.skin2D ? p.skin2D : `https://minotar.net/armor/body/${p.pseudo}/150.png`;
 
     /* ── LOAD DATA ── */
     async function load() {
       try {
-        const r = await fetch("data.json");
+        // MAJ : Forcer le rafraichissement du cache pour voir les nouvelles images/json
+        const r = await fetch("data.json?t=" + Date.now());
         DATA = r.ok ? await r.json() : [];
       } catch {
         DATA = [];
@@ -296,7 +296,6 @@
       const q = query.toLowerCase();
       
       const filtered = DATA.filter((p) => {
-        // MAJ : On cherche maintenant dans pseudo, nomRP, faction ET metier
         const ms = !q || 
                    p.pseudo.toLowerCase().includes(q) || 
                    p.nomRP.toLowerCase().includes(q) ||
@@ -324,7 +323,7 @@
         
         return `<div class="card" onclick="openMod(${i})">
           <div class="c-skin">
-            <img src="${cardSkin(p.pseudo)}" alt="${esc(p.pseudo)}" loading="lazy" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'"/>
+            <img src="${getCardImg(p)}" alt="${esc(p.pseudo)}" loading="lazy" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'"/>
             <div class="c-status ${s.cls}">${s.lbl}</div>
           </div>
           <div class="c-body">
@@ -376,10 +375,7 @@
       b.setAttribute("style", s.sty + ";font-family:Barlow Condensed,sans-serif;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:4px 9px;display:inline-block");
       
       document.getElementById("mfac").textContent = p.faction ? "FACTION: " + p.faction : "CIVIL";
-      
-      // MAJ : Ajout du tag Métier dans le dossier
       document.getElementById("mmet").textContent = p.metier ? "MÉTIER: " + p.metier : "SANS PROFESSION";
-      
       document.getElementById("mage").textContent = p.age ? "ÂGE: " + p.age : "ÂGE INCONNU";
 
       // Toujours ouvrir la page en premier
@@ -387,47 +383,57 @@
       document.body.style.overflow = "hidden";
 
       // ==========================================
-      // GÉNÉRATION SÉCURISÉE DU MODÈLE 3D
+      // GÉNÉRATION SÉCURISÉE DU MODÈLE 3D OU 2D
       // ==========================================
       const skinBox = document.getElementById("m-skinbox");
       skinBox.innerHTML = ""; 
       
-      try {
-          if (skinViewer) {
-              skinViewer.dispose();
-              skinViewer = null;
-          }
+      if (skinViewer) {
+          skinViewer.dispose();
+          skinViewer = null;
+      }
 
-          if (typeof skinview3d !== 'undefined') {
-              skinViewer = new skinview3d.SkinViewer({
-                  canvas: document.createElement("canvas"),
-                  width: 120,
-                  height: 160
-              });
-              
-              skinViewer.loadSkin(`https://minotar.net/skin/${p.pseudo}`).catch(() => {
-                  skinViewer.loadSkin(`https://minotar.net/skin/MHF_Steve`);
-              });
-              
-              skinViewer.animation = new skinview3d.WalkingAnimation();
-              skinViewer.animation.speed = 0.7;
-              
-              skinViewer.autoRotate = true;
-              skinViewer.autoRotateSpeed = 1.0;
-              
-              const control = skinview3d.createOrbitControls(skinViewer);
-              control.enableRotate = true;
-              control.enableZoom = true;
-              control.enablePan = false;
-              
-              skinBox.appendChild(skinViewer.canvas);
-          } else {
-              throw new Error("Librairie 3D non chargée.");
-          }
-      } catch (error) {
-          console.error("Erreur 3D :", error);
-          skinBox.innerHTML = `<img src="https://minotar.net/armor/body/${p.pseudo}/150.png" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'" style="height:110px; width:auto; image-rendering:pixelated;" />`;
+      // MAJ : VÉRIFICATION DU CUSTOM SKIN 2D
+      if (p.skin2D) {
+          // Si le joueur a l'attribut skin2D dans son json (comme le perroquet) : on met l'image fixe !
+          skinBox.innerHTML = `<img src="${p.skin2D}" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'" style="height:120px; width:auto; image-rendering:pixelated; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));" />`;
           skinBox.style.cursor = "default";
+          skinBox.title = "";
+      } else {
+          // Sinon, on lance la 3D
+          skinBox.title = "Cliquez et glissez pour tourner !";
+          try {
+              if (typeof skinview3d !== 'undefined') {
+                  skinViewer = new skinview3d.SkinViewer({
+                      canvas: document.createElement("canvas"),
+                      width: 120,
+                      height: 160
+                  });
+                  
+                  skinViewer.loadSkin(`https://minotar.net/skin/${p.pseudo}`).catch(() => {
+                      skinViewer.loadSkin(`https://minotar.net/skin/MHF_Steve`);
+                  });
+                  
+                  skinViewer.animation = new skinview3d.WalkingAnimation();
+                  skinViewer.animation.speed = 0.7;
+                  
+                  skinViewer.autoRotate = true;
+                  skinViewer.autoRotateSpeed = 1.0;
+                  
+                  const control = skinview3d.createOrbitControls(skinViewer);
+                  control.enableRotate = true;
+                  control.enableZoom = true;
+                  control.enablePan = false;
+                  
+                  skinBox.appendChild(skinViewer.canvas);
+              } else {
+                  throw new Error("Librairie 3D non chargée.");
+              }
+          } catch (error) {
+              console.error("Erreur 3D :", error);
+              skinBox.innerHTML = `<img src="${getCardImg(p)}" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'" style="height:110px; width:auto; image-rendering:pixelated;" />`;
+              skinBox.style.cursor = "default";
+          }
       }
     }
     
