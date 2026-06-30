@@ -4,6 +4,7 @@
     "nomRP": "Paul Bodin",
     "age": "23 ans",
     "faction": "Le Karmine Déchaîné",
+    "metier": "Journaliste",
     "statut": "vivant",
     "accroche": "Poti blagueur et journaliste à ses heures perdues",
     "description": "Paul Bodin est un individu complexe, souvent impliqué dans les affaires du Karmine Déchaîné. Son influence s'étend sur plusieurs quartiers et il est connu pour ne reculer devant rien afin de protéger les intérêts du journal. Il est super drôle enfin il essaye..."
@@ -13,6 +14,7 @@
     "nomRP": "Kevin Bodin",
     "age": "25 ans",
     "faction": "Le Karmine Déchaîné",
+    "metier": "Journaliste",
     "statut": "vivant",
     "accroche": "Aime Vince",
     "description": "Frère aîné de Paul, Kevin préfère agir dans l'ombre. Expert en logistique, c'est lui qui gère les déplacements discrets de la faction. Malgré son apparente tranquillité, son dossier indique une grande dangerosité si on s'en prend à sa famille. Il est vivement conseillé aux forces de l'ordre de ne pas l'aborder sans renforts."
@@ -22,6 +24,7 @@
     "nomRP": "Vince Lance",
     "age": "35 ans",
     "faction": "Le Karmine Déchaîné",
+    "metier": "Journaliste",
     "statut": "vivant",
     "accroche": "Aime Kevin",
     "description": "Cartographe et membre du conseil, vince participe également à la rédaction du journal Le Karmine Déchainé en tant que photographe"
