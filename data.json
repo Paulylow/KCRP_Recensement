@@ -209,7 +209,7 @@
     "metier": "Héritière de la famille Belazur",
     "statut": "vivant",
     "accroche": "“Le vin affine l’esprit comme la noblesse élève le nom.”",
-    "description": "Fille héritière de la famille Belazur, elle prend part au commerce de vin et accompagne sa famille lors des évènements. Est souvent cloitrée dans son manoir depuis que le danger guette Karminea."
+    "description": "Fille héritière de la famille Belazur, elle prend part au commerce de vin et accompagne sa famille lors des évènements. Est souvent cloitrée dans son manoir depuis que le danger guette Karminea.",
     "skin2D": "skins/lumiere.png"
   },
   {
@@ -322,7 +322,7 @@
     "accroche": "« Il est où Amarillys? »",
     "description": "Jeune femme arrivée au début de la création de la ville avec deux amis, a un crush sur Amaryllis depuis qu’il l’a recrutée à l’hôpital même s'il l'a laissée tomber au bal des Belazur. Elle est très serviable et aimante sauf quand les hommes en noir les attaquent, elle devient super aigrie et apeurée. Également architecte hors pair."
   },
-    {
+  {
     "pseudo": "Lumiky",
     "nomRP": "Koko",
     "age": "5 ans",
@@ -330,7 +330,7 @@
     "metier": "Policer",
     "statut": "vivant",
     "accroche": "KOKOOO",
-    "description": "Perroquet gris farceur, elle aime aller voir tout le monde. Elle est capable d'apprendre des mots et des sons qu'elle entend et de les réutiliser à n'importe quel moment, dans les bonnes ou mauvaises situations... !",
+    "description": "Perroquet gris farceur, elle aime aller voir tout le monde. Elle est capable d'apprendre des mots et des sons qu'elle entend et de les réutiliser à n'importe quel moment, dans les bonnes ou mauvise situations... !",
     "skin2D": "skins/koko.png"
   },
   {
