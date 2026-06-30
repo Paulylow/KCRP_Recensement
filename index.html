@@ -1,102 +1,355 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registre Public - Serveur RP</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Recensement — Karminéa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cyan: #00b4d8;
+      --black: #0a0a0a;
+      --offwhite: #f4f3ef;
+      --gray: #6b6b6b;
+      --red: #e53935;
+      --green: #00c853;
+      --orange: #ff6b00;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--offwhite);
+      font-family: "Satoshi", system-ui, sans-serif;
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--cyan); color: #000; }
+    
+    header { background: #fff; border-bottom: 3px solid var(--black); position: sticky; top: 0; z-index: 100; }
+    .h-top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 7px 28px; border-bottom: 1px solid #ddd;
+      font-family: "Barlow Condensed", sans-serif; font-size: 10px;
+      font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray);
+    }
+    .h-center { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 12px 28px 10px; }
+    .h-logo { font-family: "Clash Display", sans-serif; font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; }
+    .h-logo em { font-style: normal; color: var(--cyan); }
+    .h-badge { font-family: "Barlow Condensed", sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; background: var(--black); color: var(--cyan); padding: 3px 9px; }
+    
+    .ticker { background: var(--cyan); overflow: hidden; display: flex; align-items: center; font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; height: 28px; }
+    .t-label { background: var(--black); color: var(--cyan); padding: 0 12px; height: 100%; display: flex; align-items: center; font-size: 9px; letter-spacing: 0.2em; flex-shrink: 0; }
+    .t-track { display: flex; gap: 44px; animation: tsroll 22s linear infinite; white-space: nowrap; }
+    .t-track span::before { content: "◆ "; opacity: 0.5; }
+    @keyframes tsroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    
+    .hero { background: var(--black); padding: 48px 28px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before {
+      content: "RECENSEMENT"; position: absolute; font-family: "Clash Display", sans-serif; font-size: clamp(80px, 14vw, 180px);
+      font-weight: 700; text-transform: uppercase; color: rgba(255, 255, 255, 0.03); top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none;
+    }
+    .h-eye { font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.35em; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .h-eye::before, .h-eye::after { content: ""; width: 28px; height: 1px; background: var(--cyan); opacity: 0.4; }
+    h1 { font-family: "Clash Display", sans-serif; font-size: clamp(34px, 6vw, 70px); font-weight: 700; text-transform: uppercase; letter-spacing: -0.03em; line-height: 0.97; color: #fff; margin-bottom: 12px; }
+    h1 em { font-style: normal; color: var(--cyan); }
+    .h-sub { font-size: 14px; color: #666; max-width: 440px; margin: 0 auto 28px; line-height: 1.65; position: relative; z-index: 2; }
+    
+    .h-stats { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; position: relative; z-index: 2; }
+    .sn { font-family: "Clash Display", sans-serif; font-size: 40px; font-weight: 700; color: var(--cyan); letter-spacing: -0.03em; line-height: 1; }
+    .sl { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #444; margin-top: 2px; }
+    .sdiv { width: 1px; height: 34px; background: #222; }
+    
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .search-sec { padding: 32px 0 20px; }
+    .search-bar { display: flex; gap: 2px; border: 2px solid var(--black); background: #fff; overflow: hidden; }
+    .search-bar input { flex: 1; border: none; outline: none; padding: 13px 16px; font-family: "Satoshi", sans-serif; font-size: 15px; font-weight: 500; background: transparent; color: var(--black); }
+    .search-bar input::placeholder { color: #bbb; }
+    .search-bar button { background: var(--black); color: #fff; border: none; padding: 0 22px; font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+    .search-bar button:hover { background: var(--cyan); color: var(--black); }
+    
+    .filters { display: flex; gap: 6px; margin-top: 9px; flex-wrap: wrap; }
+    .fb { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 11px; border: 2px solid #ddd; background: transparent; cursor: pointer; transition: all 0.2s; color: var(--gray); }
+    .fb.active { border-color: var(--cyan); color: var(--cyan); background: rgba(0, 180, 216, 0.06); }
+    .fb:hover { border-color: var(--black); color: var(--black); }
+    
+    .sec-h { display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--black); padding-bottom: 9px; margin-bottom: 20px; }
+    .sec-t { font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gray); }
+    .sec-c { font-family: "Clash Display", sans-serif; font-size: 21px; font-weight: 700; color: var(--cyan); letter-spacing: -0.02em; }
+    
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(245px, 1fr)); gap: 2px; background: var(--black); border: 2px solid var(--black); margin-bottom: 60px; }
+    .card { background: #fff; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s; position: relative; overflow: hidden; }
+    .card:hover { transform: translateY(-5px); z-index: 1; box-shadow: 0 14px 36px rgba(0, 0, 0, 0.14); }
+    .c-skin { background: linear-gradient(135deg, #111, #1a2a3a); height: 165px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .c-skin img { height: 126px; width: auto; image-rendering: pixelated; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4)); }
+    .card:hover .c-skin img { transform: translateY(-5px) scale(1.05); }
+    
+    .c-status { position: absolute; top: 8px; right: 8px; font-family: "Barlow Condensed", sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; padding: 2px 7px; }
+    .sv { background: var(--green); color: #000; }
+    .sm { background: var(--red); color: #fff; }
+    .sd { background: var(--orange); color: #fff; }
+    .si { background: #555; color: #fff; }
+    
+    .c-body { padding: 14px 16px; flex: 1; display: flex; flex-direction: column; gap: 3px; }
+    .c-pseudo { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan); }
+    .c-nom { font-family: "Clash Display", sans-serif; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; color: var(--black); line-height: 1.05; }
+    .c-bio { font-size: 13px; color: var(--gray); font-style: italic; line-height: 1.6; margin-top: 4px; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .c-foot { padding: 8px 16px; border-top: 1px solid #eee; font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #bbb; display: flex; justify-content: space-between; }
+    
+    .empty { text-align: center; padding: 52px 28px; background: #fff; border: 2px solid var(--black); margin-bottom: 44px; }
+    .e-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.22; }
+    .e-title { font-family: "Clash Display", sans-serif; font-size: 20px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
+    .e-sub { font-size: 13px; color: var(--gray); }
+    
+    /* MODAL */
+    .overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.75); z-index: 9000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(4px); padding: 18px; }
+    .overlay.open { opacity: 1; pointer-events: all; }
+    .modal { background: #fff; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; transform: translateY(18px) scale(0.97); transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); position: relative; }
+    .overlay.open .modal { transform: none; }
+    .m-head { background: var(--black); padding: 24px; display: grid; grid-template-columns: 100px 1fr; gap: 18px; align-items: center; position: relative; }
+    .m-close { position: absolute; top: 11px; right: 13px; background: none; border: none; font-family: "Barlow Condensed", sans-serif; font-size: 17px; font-weight: 900; color: #555; cursor: pointer; transition: color 0.2s; }
+    .m-close:hover { color: #fff; }
+    .m-skinbox { background: linear-gradient(135deg, #111, #1a2a3a); height: 120px; display: flex; align-items: center; justify-content: center; border: 1px solid #222; }
+    .m-skinbox img { height: 100px; width: auto; image-rendering: pixelated; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5)); }
+    .m-pseudo { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); margin-bottom: 4px; }
+    .m-nom { font-family: "Clash Display", sans-serif; font-size: 26px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; color: #fff; line-height: 1; margin-bottom: 8px; }
+    
+    .tags-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+    .m-badge { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; padding: 3px 9px; display: inline-block; }
+    
+    .m-body { padding: 22px 24px; }
+    .m-lbl { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cyan); margin-bottom: 6px; border-bottom: 1px solid #eee; padding-bottom: 4px; }
+    .m-bio { font-size: 14px; color: #333; line-height: 1.75; margin-bottom: 18px; text-align: justify; }
+    .m-link { display: flex; align-items: center; gap: 9px; padding: 10px 13px; background: var(--offwhite); border: 1px solid #ddd; font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); transition: border-color 0.2s, color 0.2s; }
+    .m-link:hover { border-color: var(--cyan); color: var(--cyan); }
+    
+    footer { background: var(--black); color: #fff; padding: 22px 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .f-brand { font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cyan); }
+    
+    @media (max-width: 680px) {
+      .container { padding: 0 12px; }
+      .h-top { padding: 5px 12px; font-size: 9px; }
+      .hero { padding: 34px 12px; }
+      .m-head { grid-template-columns: 1fr; text-align: center; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- ================= VUE ACCUEIL ================= -->
-    <div id="home-view">
-        <header class="mast">
-            <div class="mast-top">
-                <span>Registre National</span>
-                <strong>Accès Public</strong>
-            </div>
-            <div class="mast-center">
-                <h1 style="font-family:'Clash Display', sans-serif; font-size: clamp(36px, 5vw, 48px); font-weight: 700; text-transform: uppercase; color: var(--black);">
-                    Recensement <em style="color: var(--cyan); font-style: normal;">RP</em>
-                </h1>
-                <div class="mast-tagline">Base de données citoyenne du serveur</div>
-            </div>
-        </header>
+  <header>
+    <div class="h-top">
+      <span>🗂️ Registre officiel de Karminéa</span>
+    </div>
+    <div class="h-center">
+      <div class="h-logo">Karmine<em>Déchaîné</em></div>
+      <div class="h-badge">Recensement</div>
+    </div>
+  </header>
 
-        <div class="ticker">
-            <div class="ticker-label">EN DIRECT</div>
-            <div class="ticker-track">
-                <span>Registre public accessible à tous les citoyens</span>
-                <span>Système de recensement en ligne</span>
-                <span>Données actualisées en temps réel</span>
-                <span>Dernière mise à jour : Aujourd'hui</span>
-            </div>
-        </div>
+  <div class="ticker">
+    <div class="t-label">Registre</div>
+    <div class="t-track">
+      <span>Registre officiel des habitants de Karminéa</span>
+      <span>Recherchez par pseudo Minecraft ou nom RP</span>
+      <span>Registre public des citoyens</span>
+      <span>Base de données gouvernementale du serveur</span>
+    </div>
+  </div>
 
-        <div class="archive-hero">
-            <h2 style="font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 24px; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 0.1em;">Rechercher un citoyen</h2>
-            <input type="text" id="searchBar" class="custom-search" placeholder="Entrez un Nom RP ou un Pseudo MC...">
-        </div>
+  <div class="hero">
+    <div class="h-eye">Karminéa — Serveur RP</div>
+    <h1>Registre des<br /><em>habitants</em></h1>
+    <p class="h-sub">Le recensement officiel de tous les citoyens de Karminéa. Retrouvez n'importe quel habitant par son pseudo ou son nom RP.</p>
+    <div class="h-stats">
+      <div>
+        <div class="sn" id="stat-t">—</div>
+        <div class="sl">Recensés</div>
+      </div>
+      <div class="sdiv"></div>
+      <div>
+        <div class="sn" id="stat-v">—</div>
+        <div class="sl">En vie</div>
+      </div>
+      <div class="sdiv"></div>
+      <div>
+        <div class="sn" id="stat-m">—</div>
+        <div class="sl">Décédés</div>
+      </div>
+    </div>
+  </div>
 
-        <main class="front container">
-            <div class="section-title">Citoyens Recensés</div>
-            <div id="characters-container" class="cards" style="border-bottom: 3px solid var(--black);">
-                <!-- Les fiches seront ici -->
-            </div>
-        </main>
+  <div class="container">
+    <div class="search-sec">
+      <div class="search-bar">
+        <input id="si" type="text" placeholder="Pseudo Minecraft ou nom RP…" autocomplete="off" />
+        <button onclick="doSearch()">Rechercher</button>
+      </div>
+      <div class="filters">
+        <button class="fb active" onclick="setFilter('tous', this)">Tous</button>
+        <button class="fb" onclick="setFilter('vivant', this)">🟢 Vivants</button>
+        <button class="fb" onclick="setFilter('mort', this)">🔴 Décédés</button>
+        <button class="fb" onclick="setFilter('disparu', this)">🟠 Disparus</button>
+      </div>
     </div>
 
-    <!-- ================= VUE PAGE DOSSIER ================= -->
-    <div id="dossier-view" style="display: none;">
-        <!-- En-tête minimaliste pour la page dossier -->
-        <header class="mast" style="border-bottom: 3px solid var(--black);">
-            <div class="mast-top container">
-                <span>Base de données gouvernementale</span>
-                <strong>Dossier Public</strong>
-            </div>
-        </header>
-
-        <main class="front container" style="padding-top: 40px;">
-            <!-- Bouton Retour -->
-            <button id="btn-retour" class="hero-btn" style="margin-bottom: 32px; border: none; cursor: pointer;">
-                ◀ RETOUR AU REGISTRE
-            </button>
-
-            <!-- Layout 2 colonnes (Skin gauche, Infos droite) -->
-            <div class="dossier-layout kd-reveal kd-visible">
-                
-                <!-- Colonne Gauche : Skin en grand -->
-                <div class="dossier-left">
-                    <div class="dossier-skin-box">
-                        <img id="page-skin-img" src="" alt="Skin 3D">
-                    </div>
-                    <div class="dossier-id">CITOYEN N° <span id="page-id-val">#0000</span></div>
-                </div>
-
-                <!-- Colonne Droite : Informations -->
-                <div class="dossier-right">
-                    <h1 id="page-nom" class="dossier-name">Nom RP</h1>
-                    <div id="page-faction" class="dossier-faction">Faction</div>
-                    
-                    <div class="dossier-meta">
-                        <span>PSEUDO MC: <strong id="page-pseudo"></strong></span>
-                        <span>ÂGE: <strong id="page-age"></strong></span>
-                    </div>
-
-                    <div class="dossier-accroche" id="page-accroche">
-                        <!-- Accroche -->
-                    </div>
-                    
-                    <div class="dossier-desc-box">
-                        <strong>Description Officielle :</strong>
-                        <p id="page-desc"></p>
-                    </div>
-                </div>
-
-            </div>
-        </main>
+    <div class="sec-h">
+      <span class="sec-t">Habitants recensés</span><span class="sec-c" id="count">—</span>
     </div>
+    <div id="grid" class="grid"></div>
+    <div id="empty" class="empty" style="display: none">
+      <div class="e-icon">🔍</div>
+      <div class="e-title">Aucun résultat</div>
+      <div class="e-sub" id="esub">Aucun habitant ne correspond.</div>
+    </div>
+  </div>
 
-    <script src="app.js"></script>
+  <footer>
+    <div class="f-brand">Le Karmine Déchaîné — Registre de Karminéa</div>
+    <div class="f-copy" style="font-family:'Barlow Condensed'; font-size:10px; color:#444;">Vérité, courage, encre.</div>
+  </footer>
+
+  <div class="overlay" id="ov" onclick="closeMod(event)">
+    <div class="modal">
+      <div class="m-head">
+        <button class="m-close" onclick="closeModDirect()">✕</button>
+        <div class="m-skinbox">
+          <img id="msk" src="" alt="" onerror="this.style.display = 'none'" />
+        </div>
+        <div>
+          <div class="m-pseudo" id="mps"></div>
+          <div class="m-nom" id="mno"></div>
+          <div class="tags-row">
+            <span class="m-badge" id="mba"></span>
+            <span class="m-badge" id="mfac" style="background:#222; color:#fff;"></span>
+            <span class="m-badge" id="mage" style="background:#222; color:#fff;"></span>
+          </div>
+        </div>
+      </div>
+      <div class="m-body">
+        <div class="m-lbl">Rapport Détaillé</div>
+        <div class="m-bio" id="mbi"></div>
+        <a class="m-link" id="mnmc" href="#" target="_blank">🔗 &nbsp;Voir le profil sur NameMC</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ── ÉTAT & CONFIG ── */
+    let DATA = [], filt = "tous", query = "";
+
+    const ST = {
+      vivant: { cls: "sv", lbl: "Vivant", sty: "background:#00c853;color:#000" },
+      mort: { cls: "sm", lbl: "Décédé", sty: "background:#e53935;color:#fff" },
+      disparu: { cls: "sd", lbl: "Disparu", sty: "background:#ff6b00;color:#fff" },
+      inconnu: { cls: "si", lbl: "Inconnu", sty: "background:#555;color:#fff" }
+    };
+    const st = (s) => ST[s ? s.toLowerCase() : "inconnu"] || ST.inconnu;
+    const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    const skin = (p) => `https://mc-heads.net/body/${p}/100`;
+
+    /* ── LOAD DATA ── */
+    async function load() {
+      try {
+        const r = await fetch("data.json");
+        DATA = r.ok ? await r.json() : [];
+      } catch {
+        DATA = [];
+      }
+      render();
+      stats();
+    }
+
+    /* ── RENDER ── */
+    function render() {
+      const g = document.getElementById("grid");
+      const e = document.getElementById("empty");
+      const q = query.toLowerCase();
+      
+      const filtered = DATA.filter((p) => {
+        const ms = !q || p.pseudo.toLowerCase().includes(q) || p.nomRP.toLowerCase().includes(q);
+        const mf = filt === "tous" || p.statut === filt;
+        return ms && mf;
+      });
+      
+      document.getElementById("count").textContent = filtered.length;
+      
+      if (!filtered.length) {
+        g.style.display = "none";
+        e.style.display = "block";
+        document.getElementById("esub").textContent = DATA.length === 0 ? "Aucun habitant recensé. Soyez le premier !" : "Aucun résultat pour cette recherche.";
+        return;
+      }
+      
+      g.style.display = "grid";
+      e.style.display = "none";
+      g.innerHTML = filtered.map((p) => {
+        const i = DATA.indexOf(p);
+        const s = st(p.statut);
+        // On utilise p.accroche pour le petit texte de la carte
+        return `<div class="card" onclick="openMod(${i})">
+          <div class="c-skin">
+            <img src="${skin(p.pseudo)}" alt="${esc(p.pseudo)}" loading="lazy"/>
+            <div class="c-status ${s.cls}">${s.lbl}</div>
+          </div>
+          <div class="c-body">
+            <div class="c-pseudo">${esc(p.pseudo)}</div>
+            <div class="c-nom">${esc(p.nomRP)}</div>
+            <div class="c-bio">« ${esc(p.accroche || "Aucune information.")} »</div>
+          </div>
+          <div class="c-foot"><span>${esc(p.faction || "Civil")}</span><span style="color:#00b4d8">Consulter →</span></div>
+        </div>`;
+      }).join("");
+    }
+
+    /* ── STATS ── */
+    function stats() {
+      document.getElementById("stat-t").textContent = DATA.length;
+      document.getElementById("stat-v").textContent = DATA.filter(p => p.statut === "vivant").length;
+      document.getElementById("stat-m").textContent = DATA.filter(p => p.statut === "mort").length;
+    }
+
+    /* ── SEARCH & FILTER ── */
+    function doSearch() { query = document.getElementById("si").value.trim(); render(); }
+    document.getElementById("si").addEventListener("input", (e) => { query = e.target.value.trim(); render(); });
+    document.getElementById("si").addEventListener("keydown", (e) => { if (e.key === "Enter") doSearch(); });
+
+    function setFilter(f, b) {
+      filt = f;
+      document.querySelectorAll(".fb").forEach((x) => x.classList.remove("active"));
+      b.classList.add("active");
+      render();
+    }
+
+    /* ── MODAL ── */
+    function openMod(i) {
+      const p = DATA[i];
+      const s = st(p.statut);
+      
+      document.getElementById("mps").textContent = p.pseudo;
+      document.getElementById("mno").textContent = p.nomRP;
+      document.getElementById("mbi").textContent = p.description || "Aucune description détaillée disponible.";
+      document.getElementById("msk").src = skin(p.pseudo);
+      document.getElementById("mnmc").href = `https://namemc.com/profile/${p.pseudo}`;
+      
+      const b = document.getElementById("mba");
+      b.textContent = s.lbl;
+      b.setAttribute("style", s.sty + ";font-family:Barlow Condensed,sans-serif;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:3px 9px;display:inline-block");
+      
+      document.getElementById("mfac").textContent = p.faction ? "FACTION: " + p.faction : "CIVIL";
+      document.getElementById("mage").textContent = p.age ? "ÂGE: " + p.age : "ÂGE INCONNU";
+
+      document.getElementById("ov").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    
+    function closeMod(e) { if (e.target === document.getElementById("ov")) closeModDirect(); }
+    function closeModDirect() { document.getElementById("ov").classList.remove("open"); document.body.style.overflow = ""; }
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModDirect(); });
+
+    /* ── INIT ── */
+    load();
+  </script>
 </body>
 </html>
