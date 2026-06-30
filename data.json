@@ -28,5 +28,55 @@
     "statut": "vivant",
     "accroche": "Aime Kevin",
     "description": "Cartographe et membre du conseil, vince participe également à la rédaction du journal Le Karmine Déchainé en tant que photographe"
+  },
+  {
+    "pseudo": "Emymyw",
+    "nomRP": "Reagan MEDUSA",
+    "age": "21 ans",
+    "faction": "Medusa",
+    "metier": "Psychologue / Psychiatre / Medium",
+    "statut": "vivant",
+    "accroche": "\"Libre sous la lune, debout pour Medusa !\" ; \"Que la lune aligne vos étoiles...\"",
+    "description": "Reagan est une jeune femme assez discrète et timide, son objectif, rendre le monde meilleur en chassant la négativité ! (dû à son métier...) Dans l'ancien monde, elle a été victime d'un génocide. Elle est l'unique survivante de Medusa et essaye éperduement de reconstruire ses terres. Depuis que Bob, Citrouille et Nanaya s'y sont rendu, nous observons une avancée, seulement... Il reste encore du chemin ! Reagan aimerait que sa contrée soit un havre de paix pour quiconque aimerait s'y aventurer, biensur dans le respect de ses terres et de la faune qui l'entoure. Pour le moment elle ne laisse pas grand monde entrer dans ses terres étant donné son passé. Mais elle y travaille !"
+  },
+  {
+    "pseudo": "AshwayVisuals",
+    "nomRP": "Vikash",
+    "age": "23 ans",
+    "faction": "Civil",
+    "metier": "Épicier",
+    "statut": "vivant",
+    "accroche": "moi c'est la bon produit frais vous le venir acheter",
+    "description": "Un jeune homme d'ethnie indienne venu faire fortune dans le commerce de Karminea, pour payer les frais élevés d'un passeur et permettre à sa famille de le rejoindre dans ce nouveau monde."
+  },
+  {
+    "pseudo": "Solartum",
+    "nomRP": "Hector Lonpiff",
+    "age": "86 ans",
+    "faction": "Civil, Karminea",
+    "metier": "Scientifique",
+    "statut": "vivant",
+    "accroche": "Nom d'une Pipe !",
+    "description": "Hector Lonpiff un viel homme un peu sénile qui tient un laboratoire pharmacetique non loin du centre ville, c'est aussi quelqu'un qui parle un peu a tout le monde en ville"
+  },
+  {
+    "pseudo": "Youchoc69",
+    "nomRP": "Jude Wiscetti",
+    "age": "38 ans",
+    "faction": "Indépendant",
+    "metier": "Herboriste voyageur",
+    "statut": "vivant",
+    "accroche": "« La mousse s’étend là où le soleil ne pénètre jamais. »",
+    "description": "Jude Wiscetti est un herboriste voyageur originaire de Wyrnn, dans les Contrées du Sud. Homme calme, discret et observateur, il parcourt Karminéa et ses alentours à la recherche de plantes rares, de remèdes anciens et de savoirs oubliés."
+  },
+  {
+    "pseudo": "L0ap",
+    "nomRP": "Kylian Mbappé",
+    "age": "27 ans",
+    "faction": "Réal Madrid",
+    "metier": "Footballeur",
+    "statut": "vivant",
+    "accroche": "Pas content triplé",
+    "description": "Footballeur de renom jouant pour l'équipe de France et détenteur de coupe du monde, il s'est fait couper la jambe par les hommes en noir et maintenant est sur le banc."
   }
 ]
