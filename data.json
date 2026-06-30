@@ -109,5 +109,228 @@
     "accroche": "Casino ?",
     "description": "Perroquet rouge farceur, il aime aller voir tout le monde. Il est capable d'apprendre des mots et des sons qu'il entend et de les réutiliser à n'importe quel moment, dans les bonnes ou mauvaises situations... !",
     "skin2D": "skins/kiki.png"
+  },
+  [
+  {
+    "pseudo": "AshwayVisuals",
+    "nomRP": "Michael JACKSON",
+    "age": "25 ans",
+    "faction": "Karminea",
+    "metier": "Ex-président",
+    "statut": "mort",
+    "accroche": "J'ai tout donné pour Karminea.",
+    "description": "Anciennement député dans son pays avant les grandes guerres, cet homme a bâti les fondations de Karminea pour reconstruire un monde meilleur pour tous.",
+    "skin2D": "skins/jackson.png"
+  },
+  {
+    "pseudo": "Kazybtw",
+    "nomRP": "Amaryllis",
+    "age": "23 ans",
+    "faction": "Karminea",
+    "metier": "Directeur d'Hopital",
+    "statut": "vivant",
+    "accroche": "PRENEZ CETTE ANTIDOTE PTN",
+    "description": "Amaryllils aussi appelé \"La Fleur\" en référence a la fleur blanche qui remplace son œil gauche, est un adorable médecin un peu maladroit mais plus qu'investit dans les cause qui le passionne ! Il parait meme qu'il serait amoureux.."
+  },
+  {
+    "pseudo": "Heorashar",
+    "nomRP": "Heo Belazur",
+    "age": "28 ans",
+    "faction": "Karminea",
+    "metier": "Aîné d'une famille de fou/Vendeur de carottes",
+    "statut": "vivant",
+    "accroche": "« La noblesse vient du coeur. »",
+    "description": "Dernier survivant de l'ancienne génération de sa famille, Heo Belazur gère tant bien que mal ce qu'il en reste. Traumatisé et se sentant coupable du passé inavouable de sa famille, il s'est éloigné de la noblesse et de ses codes pour remettre les pieds sur Terre : Un individu ne doit pas être défini par son nom ou son appartenance sociale, mais par ses actes et à la lumière dans son regard. Entouré de ses neveux et de sa nièce comme dernière famille, il simule les codes de noblesse et le mépris inhérent à ces derniers afin de maintenir la stabilité familiale. Il est prêt à partir loin pour elle, mais refuse désormais de bafouer ses propres principes."
+  },
+  {
+    "pseudo": "SoleilAlan",
+    "nomRP": "Lucas Delmart",
+    "age": "21 ans",
+    "faction": "Karminea",
+    "metier": "Aventurier",
+    "statut": "vivant",
+    "accroche": "\"À la recherche de sa rose\"",
+    "description": "Aventurier et explorateur autoproclamé, Lucas Delmart est un jeune garçon aussi mystérieux que curieux. Il est connu dans tout Karminéa pour son attrait marqué (et légèrement maladroit) envers la gente féminine. On le reconnaît facilement à sa chevelure devenue grisonnante, ainsi qu'à son armure recouverte d'or."
+  },
+  {
+    "pseudo": "Xeno631",
+    "nomRP": "Xeno",
+    "age": "20 ans",
+    "faction": "Indépendant (Favorable à Karminea)",
+    "metier": "Forgeron/Ingénieur",
+    "statut": "vivant",
+    "accroche": "\"Apportez d'avantage de fer !\"",
+    "description": "Xeno est un jeune homme de 20 ans originaire du nord de l'ancien monde. Là-bas, il a appris les bases du commerce dans la boutique de ses parents et est devenu l'apprenti du forgeron local. Afin de fuir les massacres qui sévissaient dans la région, il arriva à Karminea peu de temps après la 2ème expédition avec pour ambition de développer une activité de forgeron même si la récente perte de sa main gauche complique la réalisation de cet objectif."
+  },
+  {
+    "pseudo": "Aynashaaa",
+    "nomRP": "Aynashaa",
+    "age": "27 ans",
+    "faction": "Karminea",
+    "metier": "Servante de la famille Belazur",
+    "statut": "vivant",
+    "accroche": "Meow",
+    "description": "Elle sert la famille depuis plusieurs années maintenant. Elle est assez timide et calme et ne parle pas beaucoup. Elle s'occupe de beaucoup de chose au manoir (jardin, animaux, ménage, cuisine), et elle accompagne Lady Lumière quasiment partout où elle va."
+  },
+  {
+    "pseudo": "Bourfi",
+    "nomRP": "Tyler/Titou",
+    "age": "14 ans",
+    "faction": "Karminea",
+    "metier": "Stagiaire chez PlayTwo, Garçon d'écurie",
+    "statut": "vivant",
+    "accroche": "Vous aimez bien mon pull trop cool ?",
+    "description": "Titou est un jeune garçon un peu bête, curieux et farceur. Il a perdu ses deux parents et s'est retrouvé à la charge de Benjamin un anciens amis de ses Parents. Il cherche désormais a s'amuser par tous les moyens et à se faire des copains."
+  },
+  {
+    "pseudo": "Aekiro",
+    "nomRP": "Benzouz / Benjamin",
+    "age": "27 ans",
+    "faction": "Anciennement PlayTwo",
+    "metier": "Anciennement directeur de PlayTwo",
+    "statut": "disparu",
+    "accroche": "OOOHHH TITOUUUU",
+    "description": "Arrivé en ville pour uniquement faire la fête, il a fondé une société de production pour l'aider dans son but. Il s'est trouvé quelques camarades en plus de s'occuper de Titou. Dégouté par la société de Karminea, il a décidé de quitter la ville et partir découvrir le monde."
+  },
+  {
+    "pseudo": "HappyDridri",
+    "nomRP": "Quentin",
+    "age": "20 ans",
+    "faction": "Belazur",
+    "metier": "Garçon d'écurie",
+    "statut": "mort",
+    "accroche": "Vive les chevaux !",
+    "description": "Garçon d'écurie de la famille Belazur, simplet, aime les animaux"
+  },
+  {
+    "pseudo": "Lumiky",
+    "nomRP": "Lady Lumière Belazur",
+    "age": "20 ans",
+    "faction": "Karminea",
+    "metier": "Héritière de la famille Belazur",
+    "statut": "vivant",
+    "accroche": "“Le vin affine l’esprit comme la noblesse élève le nom.”",
+    "description": "Fille héritière de la famille Belazur, elle prend part au commerce de vin et accompagne sa famille lors des évènements. Est souvent cloitrée dans son manoir depuis que le danger guette Karminea."
+  },
+  {
+    "pseudo": "Sluje",
+    "nomRP": "Golden Sluje Belazur",
+    "age": "23 ans",
+    "faction": "Karminea",
+    "metier": "Styliste",
+    "statut": "vivant",
+    "accroche": "J'adore la banque !",
+    "description": "Fils ainé de la famille Belazur, commerçant de vêtements, de vins et de parapluie. Son coeur lui joue des tours. Menacé de mort par (entre autre) son frère."
+  },
+  {
+    "pseudo": "wheepos",
+    "nomRP": "Carl",
+    "age": "19 ans",
+    "faction": "Karminea, Fondation Bleue",
+    "metier": "Urbaniste, Architecte",
+    "statut": "vivant",
+    "accroche": "ah c l'heure rp?",
+    "description": "Parmi les premiers arrivés sur l'île, il a rapidement consacré la majeure partie de son temps et de ses moyens à la Fondation Bleue, contribuant activement à l'urbanisme de l'île. Son implication lui a permis d'accéder au poste de conseiller. Désormais proche soutien du président M. Januk, il voue une profonde haine aux habitants du Nether après avoir été témoin de l'une de leurs attaques de ses propres yeux."
+  },
+  {
+    "pseudo": "Lornyyk",
+    "nomRP": "Michel",
+    "age": "40 ans",
+    "faction": "Vegan",
+    "metier": "Boulanger",
+    "statut": "vivant",
+    "accroche": "“Bonjour, Michel, Agent Comptable, Boulanger, Vegan\"",
+    "description": "Ancien agent comptable, n'arrivant pas à trouver de poste à son arrivé sur Karminea, Michel décide de créer sa ferme et sa boulangerie 100% vegan afin de faire concurrence aux commerces non respectueux du bien être animal."
+  },
+  {
+    "pseudo": "januksan",
+    "nomRP": "Prince JanukStark",
+    "age": "22 ans",
+    "faction": "Karminea",
+    "metier": "Président de Karminea, Co-dirigeant de PlayTwo",
+    "statut": "vivant",
+    "accroche": "\"W\"",
+    "description": "Ancien Prince héritier d’Arabie Saoudite, et ayant perdu ses proches, JanukStark se rendit sur les terres nouvelles de Karminea. Un jeune homme téméraire qui aime farm même durant des situations extrêmes, JanukStark ne cherche guère le pouvoir, mais à mener une vie remplie d’aura et de fun entouré de ses ami.es."
+  },
+  {
+    "pseudo": "Nwflemme",
+    "nomRP": "XIII",
+    "age": "Inconnu",
+    "faction": "XIII - Rinesthia",
+    "metier": "XIII",
+    "statut": "vivant",
+    "accroche": "Ils ne voient toujours rien.",
+    "description": "Je suis XIII"
+  },
+  {
+    "pseudo": "neptuneww0",
+    "nomRP": "Ronan",
+    "age": "19 ans",
+    "faction": "Karminea",
+    "metier": "Policer",
+    "statut": "vivant",
+    "accroche": "éclipse si jte retrouve..",
+    "description": "Mec chill assez sympa qui parfois pete un plomb, kiff les animaux, essaie de faire son métier au mieux."
+  },
+  {
+    "pseudo": "FrenchWeebs",
+    "nomRP": "Pablo Belazur-Beaumanoir",
+    "age": "25 ans",
+    "faction": "Karminea",
+    "metier": "Directeur Général du FISC",
+    "statut": "vivant",
+    "accroche": "Subventions ? Taxes ?",
+    "description": "W"
+  },
+  {
+    "pseudo": "Zeckroms",
+    "nomRP": "Zecha",
+    "age": "29 ans",
+    "faction": "Civil",
+    "metier": "Co-Propriétaire Musée de Karminea",
+    "statut": "vivant",
+    "accroche": "Ce masque n’est pas une façade. C’est une cicatrice qui respire.",
+    "description": "Zecha est un ancien érudit d'une garde royale. Lors d'une expédition dans les tréfonds de la terre à la recherche d'antiques artéfacts, il fut frappé par une ancienne malédiction qui déforma son corps jusqu'à lui donner l'apparence de sa petite sœur décédée. Bien qu'un mystérieux masque l'ait finalement délivré de cette malédiction, il ne retrouva jamais son véritable visage. Depuis ce jour, il le porte presque constamment. Aujourd'hui, il parcourt le monde afin de transmettre les connaissances qu'il a acquises et de témoigner de tout ce qu'il a vécu et enduré."
+  },
+  {
+    "pseudo": "SypherTheGod",
+    "nomRP": "Bob Medusa",
+    "age": "Inconnu",
+    "faction": "Medusa",
+    "metier": "Gardien/Architecte/Paysagiste/Marchand itinérant",
+    "statut": "vivant",
+    "accroche": "Meilleur moyen d'arrêter une conversation qui dure ? Un coup de poêle à l'arrière du crâne.",
+    "description": "Un ermite perdu et déboussolé suite au grand cataclysme, trouva refuge sur une île volante, où il y fit la rencontre de dame Reagan, une jeune sorcière rescapée d'un massacre sans nom. Bien que réticente à première vue, après plusieurs longues discussions, elle prit la décision de l'accueillir sur son île, avant d'en faire son gardien et de lui confier la responsabilité de défendre leurs îles. Avec le temps, il est aussi devenu architecte de la reconstruction de Medusa."
+  },
+  {
+    "pseudo": "Oscar002",
+    "nomRP": "Oscar Siema",
+    "age": "21 ans",
+    "faction": "Karminea",
+    "metier": "Majordome de la famille Belazur",
+    "statut": "vivant",
+    "accroche": "C'est pas de ma faute",
+    "description": "Garçon attachant, bête et très naïf, il est en train de vivre son rêve d'être le majordome d'une famille noble. Il prend son métier beaucoup trop à cœur, au point d'oublier d'où il vient. Il ferait absolument tout pour satisfaire les ordres des Belazur."
+  },
+  {
+    "pseudo": "Pipau",
+    "nomRP": "Pauline",
+    "age": "23 ans",
+    "faction": "Karminea",
+    "metier": "Infirmière / Médecin",
+    "statut": "vivant",
+    "accroche": "« Il est où Amarillys? »",
+    "description": "Jeune femme arrivée au début de la création de la ville avec deux amis, a un crush sur Amaryllis depuis qu’il l’a recrutée à l’hôpital même s'il l'a laissée tomber au bal des Belazur. Elle est très serviable et aimante sauf quand les hommes en noir les attaquent, elle devient super aigrie et apeurée. Également architecte hors pair."
+  },
+    {
+    "pseudo": "Lumiky",
+    "nomRP": "Koko",
+    "age": "5 ans",
+    "faction": "Karminea",
+    "metier": "Policer",
+    "statut": "vivant",
+    "accroche": "KOKOOO",
+    "description": "Perroquet gris farceur, elle aime aller voir tout le monde. Elle est capable d'apprendre des mots et des sons qu'elle entend et de les réutiliser à n'importe quel moment, dans les bonnes ou mauvaises situations... !",
+    "skin2D": "skins/koko.png"
   }
 ]
