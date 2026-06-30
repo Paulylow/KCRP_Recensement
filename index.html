@@ -102,27 +102,29 @@
     .e-title { font-family: "Clash Display", sans-serif; font-size: 20px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
     .e-sub { font-size: 13px; color: var(--gray); }
     
-    /* MODAL */
+    /* MODAL DOSSIER */
     .overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.75); z-index: 9000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(4px); padding: 18px; }
     .overlay.open { opacity: 1; pointer-events: all; }
-    .modal { background: #fff; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; transform: translateY(18px) scale(0.97); transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); position: relative; }
+    .modal { background: #fff; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; transform: translateY(18px) scale(0.97); transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); position: relative; }
     .overlay.open .modal { transform: none; }
-    .m-head { background: var(--black); padding: 24px; display: grid; grid-template-columns: 100px 1fr; gap: 18px; align-items: center; position: relative; }
+    
+    /* En-tête du modal (Photo à gauche, infos à droite) */
+    .m-head { background: var(--black); padding: 24px; display: grid; grid-template-columns: 100px 1fr; gap: 20px; align-items: center; position: relative; }
     .m-close { position: absolute; top: 11px; right: 13px; background: none; border: none; font-family: "Barlow Condensed", sans-serif; font-size: 17px; font-weight: 900; color: #555; cursor: pointer; transition: color 0.2s; }
     .m-close:hover { color: #fff; }
+    
     .m-skinbox { background: linear-gradient(135deg, #111, #1a2a3a); height: 120px; display: flex; align-items: center; justify-content: center; border: 1px solid #222; }
     .m-skinbox img { height: 100px; width: auto; image-rendering: pixelated; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5)); }
+    
     .m-pseudo { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); margin-bottom: 4px; }
-    .m-nom { font-family: "Clash Display", sans-serif; font-size: 26px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; color: #fff; line-height: 1; margin-bottom: 8px; }
+    .m-nom { font-family: "Clash Display", sans-serif; font-size: 26px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; color: #fff; line-height: 1; margin-bottom: 12px; }
     
-    .tags-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
-    .m-badge { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; padding: 3px 9px; display: inline-block; }
+    .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .m-badge { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; padding: 4px 9px; display: inline-block; }
     
-    .m-body { padding: 22px 24px; }
-    .m-lbl { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cyan); margin-bottom: 6px; border-bottom: 1px solid #eee; padding-bottom: 4px; }
-    .m-bio { font-size: 14px; color: #333; line-height: 1.75; margin-bottom: 18px; text-align: justify; }
-    .m-link { display: flex; align-items: center; gap: 9px; padding: 10px 13px; background: var(--offwhite); border: 1px solid #ddd; font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); transition: border-color 0.2s, color 0.2s; }
-    .m-link:hover { border-color: var(--cyan); color: var(--cyan); }
+    .m-body { padding: 32px 28px; }
+    .m-lbl { font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+    .m-bio { font-size: 15px; color: #333; line-height: 1.8; text-align: justify; }
     
     footer { background: var(--black); color: #fff; padding: 22px 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
     .f-brand { font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cyan); }
@@ -132,6 +134,7 @@
       .h-top { padding: 5px 12px; font-size: 9px; }
       .hero { padding: 34px 12px; }
       .m-head { grid-template-columns: 1fr; text-align: center; }
+      .tags-row { justify-content: center; }
       footer { flex-direction: column; text-align: center; }
     }
   </style>
@@ -210,13 +213,18 @@
     <div class="f-copy" style="font-family:'Barlow Condensed'; font-size:10px; color:#444;">Vérité, courage, encre.</div>
   </footer>
 
+  <!-- MODAL DOSSIER -->
   <div class="overlay" id="ov" onclick="closeMod(event)">
     <div class="modal">
       <div class="m-head">
         <button class="m-close" onclick="closeModDirect()">✕</button>
+        
+        <!-- Boite du skin à gauche -->
         <div class="m-skinbox">
-          <img id="msk" src="" alt="" onerror="this.style.display = 'none'" />
+          <img id="msk" src="" alt="Skin" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'" />
         </div>
+        
+        <!-- Informations à droite -->
         <div>
           <div class="m-pseudo" id="mps"></div>
           <div class="m-nom" id="mno"></div>
@@ -227,10 +235,10 @@
           </div>
         </div>
       </div>
+      
       <div class="m-body">
         <div class="m-lbl">Rapport Détaillé</div>
         <div class="m-bio" id="mbi"></div>
-        <a class="m-link" id="mnmc" href="#" target="_blank">🔗 &nbsp;Voir le profil sur NameMC</a>
       </div>
     </div>
   </div>
@@ -245,9 +253,12 @@
       disparu: { cls: "sd", lbl: "Disparu", sty: "background:#ff6b00;color:#fff" },
       inconnu: { cls: "si", lbl: "Inconnu", sty: "background:#555;color:#fff" }
     };
+    
     const st = (s) => ST[s ? s.toLowerCase() : "inconnu"] || ST.inconnu;
     const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-    const skin = (p) => `https://mc-heads.net/body/${p}/100`;
+    
+    // On utilise Minotar qui gère mieux les caches et les joueurs non-premium
+    const skin = (p) => `https://minotar.net/armor/body/${p}/150.png`;
 
     /* ── LOAD DATA ── */
     async function load() {
@@ -287,10 +298,10 @@
       g.innerHTML = filtered.map((p) => {
         const i = DATA.indexOf(p);
         const s = st(p.statut);
-        // On utilise p.accroche pour le petit texte de la carte
+        
         return `<div class="card" onclick="openMod(${i})">
           <div class="c-skin">
-            <img src="${skin(p.pseudo)}" alt="${esc(p.pseudo)}" loading="lazy"/>
+            <img src="${skin(p.pseudo)}" alt="${esc(p.pseudo)}" loading="lazy" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'"/>
             <div class="c-status ${s.cls}">${s.lbl}</div>
           </div>
           <div class="c-body">
@@ -330,12 +341,14 @@
       document.getElementById("mps").textContent = p.pseudo;
       document.getElementById("mno").textContent = p.nomRP;
       document.getElementById("mbi").textContent = p.description || "Aucune description détaillée disponible.";
-      document.getElementById("msk").src = skin(p.pseudo);
-      document.getElementById("mnmc").href = `https://namemc.com/profile/${p.pseudo}`;
+      
+      // On insère l'image avec fallback si introuvable
+      const msk = document.getElementById("msk");
+      msk.src = skin(p.pseudo);
       
       const b = document.getElementById("mba");
       b.textContent = s.lbl;
-      b.setAttribute("style", s.sty + ";font-family:Barlow Condensed,sans-serif;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:3px 9px;display:inline-block");
+      b.setAttribute("style", s.sty + ";font-family:Barlow Condensed,sans-serif;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:4px 9px;display:inline-block");
       
       document.getElementById("mfac").textContent = p.faction ? "FACTION: " + p.faction : "CIVIL";
       document.getElementById("mage").textContent = p.age ? "ÂGE: " + p.age : "ÂGE INCONNU";
