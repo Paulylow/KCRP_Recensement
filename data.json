@@ -1,23 +1,26 @@
 [
   {
-    "pseudo": "YoCPaul",
+    "pseudo": "YocPaul",
     "nomRP": "Paul Bodin",
     "age": "23 ans",
-    "faction": "Le karmine Déchainé",
-    "description": "Enorme zizi."
+    "faction": "Le Karmine Déchaîné",
+    "accroche": "Enorme zizi.",
+    "description": "Paul Bodin est un individu complexe, souvent impliqué dans les affaires du Karmine Déchaîné. Son influence s'étend sur plusieurs quartiers et il est connu pour ne reculer devant rien afin de protéger les intérêts de sa faction. Le gouvernement le garde sous haute surveillance suite aux récents événements dans le centre-ville. Il a été aperçu pour la dernière fois près des quais."
   },
   {
     "pseudo": "Taikeo",
     "nomRP": "Kevin Bodin",
     "age": "25 ans",
-    "faction": "Le karmine Déchainé",
-    "description": "Petit zizi"
+    "faction": "Le Karmine Déchaîné",
+    "accroche": "Petit zizi.",
+    "description": "Frère aîné de Paul, Kevin préfère agir dans l'ombre. Expert en logistique, c'est lui qui gère les déplacements discrets de la faction. Malgré son apparente tranquillité, son dossier indique une grande dangerosité si on s'en prend à sa famille. Il est vivement conseillé aux forces de l'ordre de ne pas l'aborder sans renforts."
   },
   {
     "pseudo": "Squeezie",
     "nomRP": "Lucas Hauchard",
     "age": "28 ans",
     "faction": "Les Indépendants",
-    "description": "Un vagabond cherchant à faire fortune dans les mines d'or."
+    "accroche": "Un vagabond cherchant à faire fortune dans les mines d'or.",
+    "description": "Arrivé récemment en ville, Lucas a d'abord tenté de s'intégrer par le biais des mines. Il semble éviter les conflits armés, privilégiant le commerce de minerais rares. Les autorités le considèrent comme un citoyen modèle, bien que certaines de ses fréquentations nocturnes commencent à éveiller les soupçons du Bureau d'Investigation."
   }
 ]
