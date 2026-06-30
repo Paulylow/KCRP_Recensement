@@ -23,12 +23,12 @@ fetch('data.json')
     })
     .catch(error => console.error("Erreur de chargement des données :", error));
 
-// 2. Afficher les fiches de base
+// 2. Afficher les fiches
 function displayCharacters(characters) {
     container.innerHTML = '';
 
     if(characters.length === 0) {
-        container.innerHTML = '<p style="padding: 20px; font-family: Satoshi; grid-column: 1 / -1;">Aucun dossier trouvé pour cette recherche.</p>';
+        container.innerHTML = '<p style="padding: 20px; font-family: Satoshi; grid-column: 1 / -1;">Aucun citoyen trouvé pour cette recherche.</p>';
         return;
     }
 
@@ -51,14 +51,12 @@ function displayCharacters(characters) {
             <div class="card-btn" style="cursor: pointer; text-align: center; width: 100%;">CONSULTER</div>
         `;
 
-        // Écouteur d'événement pour ouvrir le dossier
         card.querySelector('.card-btn').addEventListener('click', () => openModal(char));
-
         container.appendChild(card);
     });
 }
 
-// 3. Fonction pour ouvrir et remplir le dossier détaillé
+// 3. Ouvrir le dossier public
 function openModal(char) {
     mNom.textContent = char.nomRP;
     mFaction.textContent = char.faction;
@@ -66,24 +64,24 @@ function openModal(char) {
     mPseudo.textContent = char.pseudo;
     mAge.textContent = char.age;
     
-    // Ajout des guillemets autour de l'accroche dans le dossier
     mAccroche.textContent = `« ${char.accroche} »`;
     mDesc.textContent = char.description;
 
-    // Générer un faux numéro de dossier officiel basé sur le pseudo
-    const fakeId = Math.abs(char.pseudo.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0));
-    mId.textContent = "#" + fakeId.toString().substring(0, 6);
+    // NUMÉRO LOGIQUE : On cherche la vraie position du joueur dans la base de données
+    const realId = charactersData.findIndex(c => c.pseudo === char.pseudo) + 1;
+    // padStart permet de forcer le format 4 chiffres (ex: "1" devient "0001")
+    mId.textContent = "#" + realId.toString().padStart(4, '0');
 
-    modal.classList.add('active'); // Affiche le modal
+    modal.classList.add('active'); 
 }
 
-// 4. Gestion de la fermeture du dossier
+// 4. Fermeture
 closeBtn.addEventListener('click', () => modal.classList.remove('active'));
 window.addEventListener('click', (e) => {
     if (e.target === modal) modal.classList.remove('active');
 });
 
-// 5. Barre de recherche
+// 5. Recherche
 searchBar.addEventListener('input', (e) => {
     const searchString = e.target.value.toLowerCase();
     const filteredCharacters = charactersData.filter(char => {
