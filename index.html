@@ -4,8 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Recensement — Karminéa</title>
+  
+  <!-- Polices -->
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  
+  <!-- Bibliothèque pour le rendu 3D des skins Minecraft -->
+  <script src="https://unpkg.com/skinview3d@3.0.0/bundles/skinview3d.bundle.js"></script>
+
   <style>
     :root {
       --cyan: #00b4d8;
@@ -102,19 +108,27 @@
     .e-title { font-family: "Clash Display", sans-serif; font-size: 20px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
     .e-sub { font-size: 13px; color: var(--gray); }
     
-    /* MODAL DOSSIER */
+    /* MODAL DOSSIER AVEC 3D INTERACTIVE */
     .overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.75); z-index: 9000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(4px); padding: 18px; }
     .overlay.open { opacity: 1; pointer-events: all; }
     .modal { background: #fff; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; transform: translateY(18px) scale(0.97); transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); position: relative; }
     .overlay.open .modal { transform: none; }
     
-    /* En-tête du modal (Photo à gauche, infos à droite) */
-    .m-head { background: var(--black); padding: 24px; display: grid; grid-template-columns: 100px 1fr; gap: 20px; align-items: center; position: relative; }
+    .m-head { background: var(--black); padding: 24px; display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: center; position: relative; }
     .m-close { position: absolute; top: 11px; right: 13px; background: none; border: none; font-family: "Barlow Condensed", sans-serif; font-size: 17px; font-weight: 900; color: #555; cursor: pointer; transition: color 0.2s; }
     .m-close:hover { color: #fff; }
     
-    .m-skinbox { background: linear-gradient(135deg, #111, #1a2a3a); height: 120px; display: flex; align-items: center; justify-content: center; border: 1px solid #222; }
-    .m-skinbox img { height: 100px; width: auto; image-rendering: pixelated; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5)); }
+    /* Style de la boite 3D */
+    .m-skinbox { 
+      background: linear-gradient(135deg, #111, #1a2a3a); 
+      height: 160px; 
+      display: flex; align-items: center; justify-content: center; 
+      border: 1px solid #222; 
+      overflow: hidden; 
+      cursor: grab; /* Curseur main pour montrer que c'est interactif */
+    }
+    .m-skinbox:active { cursor: grabbing; }
+    .m-skinbox canvas { outline: none; } /* Enleve la bordure bleue au clic */
     
     .m-pseudo { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); margin-bottom: 4px; }
     .m-nom { font-family: "Clash Display", sans-serif; font-size: 26px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; color: #fff; line-height: 1; margin-bottom: 12px; }
@@ -219,12 +233,12 @@
       <div class="m-head">
         <button class="m-close" onclick="closeModDirect()">✕</button>
         
-        <!-- Boite du skin à gauche -->
-        <div class="m-skinbox">
-          <img id="msk" src="" alt="Skin" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'" />
+        <!-- Boite du skin 3D interactif -->
+        <div class="m-skinbox" id="m-skinbox" title="Cliquez et glissez pour tourner !">
+          <!-- Le canvas 3D sera généré ici par Javascript -->
         </div>
         
-        <!-- Informations à droite -->
+        <!-- Informations -->
         <div>
           <div class="m-pseudo" id="mps"></div>
           <div class="m-nom" id="mno"></div>
@@ -246,6 +260,7 @@
   <script>
     /* ── ÉTAT & CONFIG ── */
     let DATA = [], filt = "tous", query = "";
+    let skinViewer = null; // Stocke la visionneuse 3D pour la nettoyer à la fermeture
 
     const ST = {
       vivant: { cls: "sv", lbl: "Vivant", sty: "background:#00c853;color:#000" },
@@ -257,8 +272,8 @@
     const st = (s) => ST[s ? s.toLowerCase() : "inconnu"] || ST.inconnu;
     const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     
-    // On utilise Minotar qui gère mieux les caches et les joueurs non-premium
-    const skin = (p) => `https://minotar.net/armor/body/${p}/150.png`;
+    // Rendu d'image 2D simple pour les cartes (plus performant)
+    const cardSkin = (p) => `https://minotar.net/armor/body/${p}/150.png`;
 
     /* ── LOAD DATA ── */
     async function load() {
@@ -272,7 +287,7 @@
       stats();
     }
 
-    /* ── RENDER ── */
+    /* ── RENDER ACCUEIL ── */
     function render() {
       const g = document.getElementById("grid");
       const e = document.getElementById("empty");
@@ -301,7 +316,7 @@
         
         return `<div class="card" onclick="openMod(${i})">
           <div class="c-skin">
-            <img src="${skin(p.pseudo)}" alt="${esc(p.pseudo)}" loading="lazy" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'"/>
+            <img src="${cardSkin(p.pseudo)}" alt="${esc(p.pseudo)}" loading="lazy" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'"/>
             <div class="c-status ${s.cls}">${s.lbl}</div>
           </div>
           <div class="c-body">
@@ -333,32 +348,76 @@
       render();
     }
 
-    /* ── MODAL ── */
+    /* ── MODAL & 3D SKIN ── */
     function openMod(i) {
       const p = DATA[i];
       const s = st(p.statut);
       
+      // Textes
       document.getElementById("mps").textContent = p.pseudo;
       document.getElementById("mno").textContent = p.nomRP;
       document.getElementById("mbi").textContent = p.description || "Aucune description détaillée disponible.";
       
-      // On insère l'image avec fallback si introuvable
-      const msk = document.getElementById("msk");
-      msk.src = skin(p.pseudo);
-      
+      // Badges
       const b = document.getElementById("mba");
       b.textContent = s.lbl;
       b.setAttribute("style", s.sty + ";font-family:Barlow Condensed,sans-serif;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:4px 9px;display:inline-block");
-      
       document.getElementById("mfac").textContent = p.faction ? "FACTION: " + p.faction : "CIVIL";
       document.getElementById("mage").textContent = p.age ? "ÂGE: " + p.age : "ÂGE INCONNU";
 
+      // ==========================================
+      // GÉNÉRATION DU MODÈLE 3D INTERACTIF
+      // ==========================================
+      const skinBox = document.getElementById("m-skinbox");
+      skinBox.innerHTML = ""; // Vider l'ancienne image/canvas s'il y en a une
+      
+      if (skinViewer) {
+          skinViewer.dispose(); // Détruire l'ancienne instance 3D pour la mémoire
+      }
+
+      // Initialiser le nouveau modèle 3D
+      skinViewer = new skinview3d.SkinViewer({
+          canvas: document.createElement("canvas"),
+          width: 120, // Largeur de la boite dans la grille
+          height: 160,
+          skin: `https://minotar.net/skin/${p.pseudo}` // Récupération de la texture brute
+      });
+
+      // Si le pseudo est introuvable/cracké, Minotar renverra une texture de Steve par défaut !
+      
+      // Faire tourner le skin sur lui-même tout le temps
+      skinViewer.autoRotate = true;
+      skinViewer.autoRotateSpeed = 0.5;
+
+      // Activer les contrôles à la souris (cliquer, glisser, zoomer)
+      const control = skinview3d.createOrbitControls(skinViewer);
+      control.enableRotate = true;
+      control.enableZoom = true;
+      control.enablePan = false; // Désactiver le déplacement latéral
+
+      // Injecter le canevas 3D dans le HTML
+      skinBox.appendChild(skinViewer.canvas);
+      // ==========================================
+
+      // Afficher la fenêtre
       document.getElementById("ov").classList.add("open");
       document.body.style.overflow = "hidden";
     }
     
+    // Fermeture de la fenêtre
     function closeMod(e) { if (e.target === document.getElementById("ov")) closeModDirect(); }
-    function closeModDirect() { document.getElementById("ov").classList.remove("open"); document.body.style.overflow = ""; }
+    
+    function closeModDirect() { 
+      document.getElementById("ov").classList.remove("open"); 
+      document.body.style.overflow = ""; 
+      
+      // Stopper le moteur 3D pour économiser les ressources quand le dossier est fermé
+      if (skinViewer) {
+          skinViewer.dispose();
+          skinViewer = null;
+      }
+    }
+    
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModDirect(); });
 
     /* ── INIT ── */
