@@ -210,6 +210,7 @@
     "statut": "vivant",
     "accroche": "“Le vin affine l’esprit comme la noblesse élève le nom.”",
     "description": "Fille héritière de la famille Belazur, elle prend part au commerce de vin et accompagne sa famille lors des évènements. Est souvent cloitrée dans son manoir depuis que le danger guette Karminea."
+    "skin2D": "skins/lumiere.png"
   },
   {
     "pseudo": "Sluje",
@@ -331,5 +332,35 @@
     "accroche": "KOKOOO",
     "description": "Perroquet gris farceur, elle aime aller voir tout le monde. Elle est capable d'apprendre des mots et des sons qu'elle entend et de les réutiliser à n'importe quel moment, dans les bonnes ou mauvaises situations... !",
     "skin2D": "skins/koko.png"
+  },
+  {
+    "pseudo": "zckl1",
+    "nomRP": "Zack",
+    "age": "20 ans",
+    "faction": "Karminea",
+    "metier": "banquier",
+    "statut": "vivant",
+    "accroche": "viens faire un prêt a la banque stp",
+    "description": "meilleur banquier de la ville"
+  },
+  {
+    "pseudo": "Sensei_Deleo",
+    "nomRP": "Leo",
+    "age": "27 ans",
+    "faction": "Karminea",
+    "metier": "Chômeur",
+    "statut": "vivant",
+    "accroche": "un punk pisse sur le capitalisme !",
+    "description": "Punk propriétaire du cabanon des dons"
+  },
+  {
+    "pseudo": "Cosmic014",
+    "nomRP": "Hanmā",
+    "age": "37 ans",
+    "faction": "Karminea",
+    "metier": "Artisan",
+    "statut": "vivant",
+    "accroche": "Il n'y a pas de prix à la perfection, seulement une fin à la poursuite.",
+    "description": "Hanmā est un Artisan, ingénieur, orfèvre, prothésiste, qui s'est perfectionné durant sa vie de vagabond. Fatigué de ses années sur les routes il s'est installé à Karminea pour usé de son savoir et aidé la ville et le progrès. Sa quête de connaissance technique est infini car il souhaite devenir le meilleur dans son domaine. C'est un bourreau de travail qui passera jour et nuit dans son atelier pour répondre au requête. Fervent défenseur des droits et surtout du bien être des travailleurs il s'est proposé comme conseiller ce qui à ce jour lui plait d'aider la population. Dans cette même continuité il propose aussi ses services de prothésiste de part sa forte expérience personnelle, il est par ailleurs spécialisé dans les bras artificielle. Père de famille et veuf il est très protecteur et méfiant mais essaye de plus en plus de s'ouvrir aux autres, son atelier est autant un havre de paix qu'une prison qui l'isole."
   }
 ]
