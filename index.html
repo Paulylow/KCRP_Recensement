@@ -3,38 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recensement Officiel - Serveur RP</title>
+    <title>Registre Public - Serveur RP</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- En-tête type "Journal Officiel" -->
+    <!-- En-tête -->
     <header class="mast">
         <div class="mast-top">
             <span>Registre National</span>
-            <strong>Accès Autorisé</strong>
+            <strong>Accès Public</strong>
         </div>
         <div class="mast-center">
             <h1 style="font-family:'Clash Display', sans-serif; font-size: clamp(36px, 5vw, 48px); font-weight: 700; text-transform: uppercase; color: var(--black);">
                 Recensement <em style="color: var(--cyan); font-style: normal;">RP</em>
             </h1>
-            <div class="mast-tagline">Base de données gouvernementale du serveur</div>
+            <div class="mast-tagline">Base de données citoyenne du serveur</div>
         </div>
     </header>
 
-    <!-- Bandeau défilant (Ticker) -->
+    <!-- Bandeau défilant -->
     <div class="ticker">
         <div class="ticker-label">EN DIRECT</div>
         <div class="ticker-track">
-            <span>Recherche de citoyens active</span>
-            <span>Système de recensement opérationnel</span>
-            <span>Sécurisation des données : OK</span>
+            <span>Registre public accessible à tous les citoyens</span>
+            <span>Système de recensement en ligne</span>
+            <span>Données actualisées en temps réel</span>
             <span>Dernière mise à jour : Aujourd'hui</span>
         </div>
     </div>
 
     <!-- Zone de recherche -->
     <div class="archive-hero">
-        <h2 style="font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 24px; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 0.1em;">Rechercher un dossier</h2>
+        <h2 style="font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 24px; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 0.1em;">Rechercher un citoyen</h2>
         <input type="text" id="searchBar" class="custom-search" placeholder="Entrez un Nom RP ou un Pseudo MC...">
     </div>
 
@@ -42,20 +42,19 @@
     <main class="front container">
         <div class="section-title">Citoyens Recensés</div>
         
-        <!-- Conteneur des fiches -->
         <div id="characters-container" class="cards" style="border-bottom: 3px solid var(--black);">
             <!-- Le JavaScript va injecter les fiches ici -->
         </div>
     </main>
 
-    <!-- MODAL : DOSSIER DÉTAILLÉ -->
+    <!-- MODAL : DOSSIER PUBLIC -->
     <div id="dossier-modal" class="modal-overlay">
         <div class="modal-content">
             <span id="close-modal" class="modal-close">&times;</span>
             
             <div class="modal-header">
-                <h2 class="modal-title">Dossier <em class="modal-cyan">Classifié</em></h2>
-                <div class="modal-id">ID CITOYEN: <span id="modal-id-val">#0000</span></div>
+                <h2 class="modal-title">Dossier <em class="modal-cyan">Public</em></h2>
+                <div class="modal-id">CITOYEN N° <span id="modal-id-val">#0000</span></div>
             </div>
             
             <div class="modal-body">
@@ -76,7 +75,7 @@
                     </div>
                     
                     <div class="modal-desc-box">
-                        <strong>Rapport Détaillé :</strong>
+                        <strong>Description :</strong>
                         <p id="modal-desc"></p>
                     </div>
                 </div>
