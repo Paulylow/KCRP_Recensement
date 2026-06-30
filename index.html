@@ -118,7 +118,7 @@
     .m-close { position: absolute; top: 11px; right: 13px; background: none; border: none; font-family: "Barlow Condensed", sans-serif; font-size: 17px; font-weight: 900; color: #555; cursor: pointer; transition: color 0.2s; }
     .m-close:hover { color: #fff; }
     
-    /* Style de la boite 3D/2D */
+    /* Style de la boite 3D */
     .m-skinbox { 
       background: linear-gradient(135deg, #111, #1a2a3a); 
       height: 160px; 
@@ -233,9 +233,9 @@
       <div class="m-head">
         <button class="m-close" onclick="closeModDirect()">✕</button>
         
-        <!-- Boite du skin -->
+        <!-- Boite du skin 3D interactif -->
         <div class="m-skinbox" id="m-skinbox" title="Cliquez et glissez pour tourner !">
-          <!-- Le canvas 3D (ou l'image de secours) sera généré ici par Javascript -->
+          <!-- Le canvas 3D sera injecté ici par JS -->
         </div>
         
         <!-- Informations -->
@@ -271,6 +271,8 @@
     
     const st = (s) => ST[s ? s.toLowerCase() : "inconnu"] || ST.inconnu;
     const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    
+    // Rendu 2D des skins sur la page d'accueil pour la performance
     const cardSkin = (p) => `https://minotar.net/armor/body/${p}/150.png`;
 
     /* ── LOAD DATA ── */
@@ -346,12 +348,12 @@
       render();
     }
 
-    /* ── MODAL & SKIN 3D BLINDÉ ── */
+    /* ── MODAL & 3D SKIN ── */
     function openMod(i) {
       const p = DATA[i];
       const s = st(p.statut);
       
-      // 1. Mise à jour des textes
+      // Mise à jour des textes
       document.getElementById("mps").textContent = p.pseudo;
       document.getElementById("mno").textContent = p.nomRP;
       document.getElementById("mbi").textContent = p.description || "Aucune description détaillée disponible.";
@@ -362,11 +364,13 @@
       document.getElementById("mfac").textContent = p.faction ? "FACTION: " + p.faction : "CIVIL";
       document.getElementById("mage").textContent = p.age ? "ÂGE: " + p.age : "ÂGE INCONNU";
 
-      // 2. OUVERTURE DE LA FENÊTRE (D'abord, pour être sûr de toujours afficher la fiche)
+      // Toujours ouvrir la page en premier
       document.getElementById("ov").classList.add("open");
       document.body.style.overflow = "hidden";
 
-      // 3. ESSAI DU CHARGEMENT 3D
+      // ==========================================
+      // GÉNÉRATION SÉCURISÉE DU MODÈLE 3D
+      // ==========================================
       const skinBox = document.getElementById("m-skinbox");
       skinBox.innerHTML = ""; 
       
@@ -376,18 +380,28 @@
               skinViewer = null;
           }
 
-          // Si la librairie 3D est bien chargée
           if (typeof skinview3d !== 'undefined') {
+              // Création de l'espace 3D
               skinViewer = new skinview3d.SkinViewer({
                   canvas: document.createElement("canvas"),
                   width: 120,
-                  height: 160,
-                  skin: `https://mc-heads.net/skin/${p.pseudo}` // mc-heads est très stable pour la 3D
+                  height: 160
               });
               
-              skinViewer.autoRotate = true;
-              skinViewer.autoRotateSpeed = 0.5;
+              // Chargement du skin : Si le pseudo n'existe pas, il met Steve !
+              skinViewer.loadSkin(`https://minotar.net/skin/${p.pseudo}`).catch(() => {
+                  skinViewer.loadSkin(`https://minotar.net/skin/MHF_Steve`);
+              });
               
+              // Le personnage marche
+              skinViewer.animation = new skinview3d.WalkingAnimation();
+              skinViewer.animation.speed = 0.7;
+              
+              // Le personnage tourne sur lui-même
+              skinViewer.autoRotate = true;
+              skinViewer.autoRotateSpeed = 1.0;
+              
+              // Contrôles de la souris (cliquer-glisser)
               const control = skinview3d.createOrbitControls(skinViewer);
               control.enableRotate = true;
               control.enableZoom = true;
@@ -398,17 +412,15 @@
               throw new Error("Librairie 3D non chargée.");
           }
       } catch (error) {
-          console.error("Impossible de charger la 3D, passage en 2D automatique :", error);
-          
-          // PLAN B : Image de secours 2D si la 3D plante !
+          // Secours 2D si la 3D plante totalement
+          console.error("Erreur 3D :", error);
           skinBox.innerHTML = `<img src="https://minotar.net/armor/body/${p.pseudo}/150.png" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'" style="height:110px; width:auto; image-rendering:pixelated;" />`;
           skinBox.style.cursor = "default";
       }
     }
     
-    // Fermeture propre
+    // Nettoyer la 3D quand on ferme la fenêtre pour économiser la mémoire du PC/Téléphone
     function closeMod(e) { if (e.target === document.getElementById("ov")) closeModDirect(); }
-    
     function closeModDirect() { 
       document.getElementById("ov").classList.remove("open"); 
       document.body.style.overflow = ""; 
@@ -417,7 +429,6 @@
           skinViewer = null;
       }
     }
-    
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModDirect(); });
 
     /* ── INIT ── */
