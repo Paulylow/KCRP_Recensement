@@ -3,17 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recensement RP - Serveur Minecraft</title>
+    <title>Recensement Officiel - Serveur RP</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Recensement du Serveur RP</h1>
-        <input type="text" id="searchBar" placeholder="Rechercher par Nom RP ou Pseudo...">
+    <header class="mast">
+        <div class="mast-top">
+            <span>Registre National</span>
+            <strong>Accès Autorisé</strong>
+        </div>
+        <div class="mast-center">
+            <h1 style="font-family:'Clash Display', sans-serif; font-size: clamp(36px, 5vw, 48px); font-weight: 700; text-transform: uppercase; color: var(--black);">
+                Recensement <em style="color: var(--cyan); font-style: normal;">RP</em>
+            </h1>
+            <div class="mast-tagline">Base de données gouvernementale du serveur</div>
+        </div>
     </header>
 
-    <main>
-        <div id="characters-container" class="grid-container">
+    <div class="ticker">
+        <div class="ticker-label">EN DIRECT</div>
+        <div class="ticker-track">
+            <span>Recherche de citoyens active</span>
+            <span>Système de recensement opérationnel</span>
+            <span>Sécurisation des données : OK</span>
+            <span>Dernière mise à jour : Aujourd'hui</span>
+        </div>
+    </div>
+
+    <div class="archive-hero">
+        <h2 style="font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 24px; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 0.1em;">Rechercher un dossier</h2>
+        <input type="text" id="searchBar" class="custom-search" placeholder="Entrez un Nom RP ou un Pseudo MC...">
+    </div>
+
+    <main class="front container">
+        <div class="section-title">Citoyens Recensés</div>
+        
+        <div id="characters-container" class="cards" style="border-bottom: 3px solid var(--black);">
             </div>
     </main>
 
