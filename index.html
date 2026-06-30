@@ -7,80 +7,94 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- En-tête -->
-    <header class="mast">
-        <div class="mast-top">
-            <span>Registre National</span>
-            <strong>Accès Public</strong>
-        </div>
-        <div class="mast-center">
-            <h1 style="font-family:'Clash Display', sans-serif; font-size: clamp(36px, 5vw, 48px); font-weight: 700; text-transform: uppercase; color: var(--black);">
-                Recensement <em style="color: var(--cyan); font-style: normal;">RP</em>
-            </h1>
-            <div class="mast-tagline">Base de données citoyenne du serveur</div>
-        </div>
-    </header>
 
-    <!-- Bandeau défilant -->
-    <div class="ticker">
-        <div class="ticker-label">EN DIRECT</div>
-        <div class="ticker-track">
-            <span>Registre public accessible à tous les citoyens</span>
-            <span>Système de recensement en ligne</span>
-            <span>Données actualisées en temps réel</span>
-            <span>Dernière mise à jour : Aujourd'hui</span>
-        </div>
-    </div>
-
-    <!-- Zone de recherche -->
-    <div class="archive-hero">
-        <h2 style="font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 24px; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 0.1em;">Rechercher un citoyen</h2>
-        <input type="text" id="searchBar" class="custom-search" placeholder="Entrez un Nom RP ou un Pseudo MC...">
-    </div>
-
-    <!-- Contenu Principal -->
-    <main class="front container">
-        <div class="section-title">Citoyens Recensés</div>
-        
-        <div id="characters-container" class="cards" style="border-bottom: 3px solid var(--black);">
-            <!-- Le JavaScript va injecter les fiches ici -->
-        </div>
-    </main>
-
-    <!-- MODAL : DOSSIER PUBLIC -->
-    <div id="dossier-modal" class="modal-overlay">
-        <div class="modal-content">
-            <span id="close-modal" class="modal-close">&times;</span>
-            
-            <div class="modal-header">
-                <h2 class="modal-title">Dossier <em class="modal-cyan">Public</em></h2>
-                <div class="modal-id">CITOYEN N° <span id="modal-id-val">#0000</span></div>
+    <!-- ================= VUE ACCUEIL ================= -->
+    <div id="home-view">
+        <header class="mast">
+            <div class="mast-top">
+                <span>Registre National</span>
+                <strong>Accès Public</strong>
             </div>
-            
-            <div class="modal-body">
-                <div class="modal-skin">
-                    <img id="modal-skin-img" src="" alt="Skin 3D">
-                </div>
-                <div class="modal-info">
-                    <h3 id="modal-nom" class="modal-name">Nom RP</h3>
-                    <div id="modal-faction" class="modal-faction">Faction</div>
-                    
-                    <div class="modal-meta">
-                        <span>PSEUDO MC: <strong id="modal-pseudo"></strong></span>
-                        <span>ÂGE: <strong id="modal-age"></strong></span>
-                    </div>
+            <div class="mast-center">
+                <h1 style="font-family:'Clash Display', sans-serif; font-size: clamp(36px, 5vw, 48px); font-weight: 700; text-transform: uppercase; color: var(--black);">
+                    Recensement <em style="color: var(--cyan); font-style: normal;">RP</em>
+                </h1>
+                <div class="mast-tagline">Base de données citoyenne du serveur</div>
+            </div>
+        </header>
 
-                    <div class="modal-accroche" id="modal-accroche">
-                        <!-- L'accroche s'affiche ici -->
-                    </div>
-                    
-                    <div class="modal-desc-box">
-                        <strong>Description :</strong>
-                        <p id="modal-desc"></p>
-                    </div>
-                </div>
+        <div class="ticker">
+            <div class="ticker-label">EN DIRECT</div>
+            <div class="ticker-track">
+                <span>Registre public accessible à tous les citoyens</span>
+                <span>Système de recensement en ligne</span>
+                <span>Données actualisées en temps réel</span>
+                <span>Dernière mise à jour : Aujourd'hui</span>
             </div>
         </div>
+
+        <div class="archive-hero">
+            <h2 style="font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 24px; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 0.1em;">Rechercher un citoyen</h2>
+            <input type="text" id="searchBar" class="custom-search" placeholder="Entrez un Nom RP ou un Pseudo MC...">
+        </div>
+
+        <main class="front container">
+            <div class="section-title">Citoyens Recensés</div>
+            <div id="characters-container" class="cards" style="border-bottom: 3px solid var(--black);">
+                <!-- Les fiches seront ici -->
+            </div>
+        </main>
+    </div>
+
+    <!-- ================= VUE PAGE DOSSIER ================= -->
+    <div id="dossier-view" style="display: none;">
+        <!-- En-tête minimaliste pour la page dossier -->
+        <header class="mast" style="border-bottom: 3px solid var(--black);">
+            <div class="mast-top container">
+                <span>Base de données gouvernementale</span>
+                <strong>Dossier Public</strong>
+            </div>
+        </header>
+
+        <main class="front container" style="padding-top: 40px;">
+            <!-- Bouton Retour -->
+            <button id="btn-retour" class="hero-btn" style="margin-bottom: 32px; border: none; cursor: pointer;">
+                ◀ RETOUR AU REGISTRE
+            </button>
+
+            <!-- Layout 2 colonnes (Skin gauche, Infos droite) -->
+            <div class="dossier-layout kd-reveal kd-visible">
+                
+                <!-- Colonne Gauche : Skin en grand -->
+                <div class="dossier-left">
+                    <div class="dossier-skin-box">
+                        <img id="page-skin-img" src="" alt="Skin 3D">
+                    </div>
+                    <div class="dossier-id">CITOYEN N° <span id="page-id-val">#0000</span></div>
+                </div>
+
+                <!-- Colonne Droite : Informations -->
+                <div class="dossier-right">
+                    <h1 id="page-nom" class="dossier-name">Nom RP</h1>
+                    <div id="page-faction" class="dossier-faction">Faction</div>
+                    
+                    <div class="dossier-meta">
+                        <span>PSEUDO MC: <strong id="page-pseudo"></strong></span>
+                        <span>ÂGE: <strong id="page-age"></strong></span>
+                    </div>
+
+                    <div class="dossier-accroche" id="page-accroche">
+                        <!-- Accroche -->
+                    </div>
+                    
+                    <div class="dossier-desc-box">
+                        <strong>Description Officielle :</strong>
+                        <p id="page-desc"></p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
     </div>
 
     <script src="app.js"></script>
