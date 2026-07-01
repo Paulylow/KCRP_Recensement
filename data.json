@@ -108,8 +108,7 @@
     "metier": "Ecuyer à ses heures perdues",
     "statut": "vivant",
     "accroche": "ferme ta gueule fils de pute",
-    "description": "Juliendupré est un petit con qui vient faire chier tout le monde dans le village, surtout autour du relais de Vince (Vincent). Il essaye de se faire remarquer parce qu'il manque cruellement d'attention mais n'a pas les codes sociaux (tutoie tout le monde, interrompt des conversations etc.).",
-    "skin2D": "skins/julien.png"
+    "description": "Juliendupré est un petit con qui vient faire chier tout le monde dans le village, surtout autour du relais de Vince (Vincent). Il essaye de se faire remarquer parce qu'il manque cruellement d'attention mais n'a pas les codes sociaux (tutoie tout le monde, interrompt des conversations etc.)."
   },
   {
     "pseudo": "Aynashaaa",
@@ -279,7 +278,7 @@
     "metier": "Président de Karminea, Co-dirigeant de PlayTwo",
     "statut": "vivant",
     "accroche": "\"W\"",
-    "description": "Ancien Prince héritier d’Arabie Saoudite, et ayant perdu ses proches, JanukStark se rendit sur les terres nouvelles de Karminea. Un jeune homme téméraire qui aime farm même durant des situations extrêmes, JanukStark ne cherche guère le pouvoir, mais à mener une vie remplie d’aura et de fun entouré de ses ami.es."
+    "description": "Ancien Prince héritier d’Arabie Saoudite et descendant de la famille Toumini, JanukStark se rendit sur les terres nouvelles de Karminea après avoir perdu tout ce qu’il lui était chère. Un jeune homme téméraire qui aime aura farm même durant des situations extrêmes, JanukStark ne cherche guère le pouvoir, mais à mener une vie rempli de fun entouré de ses ami.es."
   },
   {
     "pseudo": "Nwflemme",
@@ -558,5 +557,27 @@
     "accroche": "En soutien d'Hector Lonpiff",
     "description": "Élu au Conseil de Karminéa en soutien à Hector Lonpiff.",
     "conseil": true
+  },
+  {
+    "pseudo": "Flohobimos",
+    "nomRP": "Kim Cannard",
+    "age": "22 plumes",
+    "pays": "Karminea",
+    "faction": "Kopia",
+    "metier": "PDG de Kopia, DJ.",
+    "statut": "vivant",
+    "accroche": "J'ai déjà cassé 3 pattes à un confrère.",
+    "description": "Alors qu'il a passé son enfance dans la Mare du Coin, Kim Cannard défia un jour son père de nager le plus loin possible, et traversa différentes îles avant d'arriver à Karminea. Ne sachant pas comment retourner d'où il vient, il décida de s'y installer. Son aventure s'annonce comme son plumage, douce mais mouvementée..."
+  },
+  {
+    "pseudo": "wsoox",
+    "nomRP": "Alex Cooper",
+    "age": "23 ans",
+    "pays": "Karminea",
+    "faction": "Civil",
+    "metier": "Employé chez Play Two",
+    "statut": "vivant",
+    "accroche": "Envoie 10 jetons de base",
+    "description": "Ptit gars sans histoire arriver à Karminéa durant le crash de bateau, accro aux jeux d'argent/vices en tout genre, employé de Play Two mais petit à petit ses supérieurs et collègues l'abandonnent et Cooper se sent délaissé par tout ce qui se trouve sur l'île, maintenant, c'est juste devenu un ptit con qui essaye juste de s'amuser quel qu'en soit le prix, actuellement il pêche juste pour oublier les problèmes qui l'entoure."
   }
 ]
