@@ -451,5 +451,35 @@
     "metier": "Alchimiste",
     "statut": "vivant",
     "description": "Après avoir quitté Karminéa il fit serment d’allégeance à Sylvaris, il est réservé et peu bavard, il préfère observer et écouter. Il n’hésitera jamais à venir en aide à ceux qui en ont besoin. Il passe une partie de son temps à rechercher et expérimenter de nouvelles formules afin de créer des potions toujours plus efficaces."
+  },
+  {
+    "pseudo": "Panda_Saumipi",
+    "nomRP": "Iso",
+    "age": "25 ans",
+    "faction": "Karminea",
+    "metier": "Ancien Directeur de l'Hôpital",
+    "statut": "vivant",
+    "accroche": "\"La vie n'est fait qu'a un fils, celui de la médecine\"",
+    "description": "Habitant des ile Fidji de base, connu ses techniques de soins extraordinaire, puis chamboulement de la vie et il se retrouve a Karminea a batir l'hopital, il a fait block par block, et ensuite a pris sa retraite"
+  },
+  {
+    "pseudo": "Cacedoupamso",
+    "nomRP": "Nestor",
+    "age": "59 ans",
+    "faction": "Beaumanoir, Karminea",
+    "metier": "Majordome, Architecte",
+    "statut": "vivant",
+    "accroche": "Nestor, pour vous servir.",
+    "description": "Majordome de père en fils de la famille noble française Beaumanoir, Nestor a tout appris de son père et du père de Diane avec qui il a grandit, ce dernier n'ayant pas survécu la transition vers le nouveau monde, il s'occupe de Diane comme de sa fille et travaille d'arrache pied pour ressortir de terre une batisse qui aurait au moins un centième de la prestance, taille et beauté de leur chateau de l'ancien temps..."
+  },
+  {
+    "pseudo": "Yngvaar",
+    "nomRP": "Blanche Himent",
+    "age": "26 ans",
+    "faction": "Karminea",
+    "metier": "Stagiaire non rémunéré d'Horace Bank",
+    "statut": "vivant",
+    "accroche": "\"Si je dois bosser autant s'en griller une...\"",
+    "description": "Stagiaire sans avoir demandé de stage, \"travail\" régulièrement pour Horace Bank notamment durant la Grande Grève. Littéralement malade du travail, il préfère s'envoyer une bonne petite sieste que d'affronter cette montagne de problèmes. Petit soucis d'addiction à la cigarette mais pas d'inquiétude, il ne voudra pas s'en soigner."
   }
 ]
