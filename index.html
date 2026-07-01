@@ -279,11 +279,12 @@
           <div class="m-nom" id="mno"></div>
           <div class="tags-row">
             <span class="m-badge" id="mba"></span>
-            <!-- MAJ : Ajout du badge Pays dans le dossier -->
             <span class="m-badge" id="mpays" style="background:#00b4d8; color:#000;"></span>
             <span class="m-badge" id="mfac" style="background:#222; color:#fff;"></span>
             <span class="m-badge" id="mmet" style="background:#222; color:#fff;"></span>
             <span class="m-badge" id="mage" style="background:#222; color:#fff;"></span>
+            <!-- MAJ : Nouveau tag jaune pour les membres du Conseil -->
+            <span class="m-badge" id="mcons" style="background:#ffd700; color:#000; display:none;">👑 CONSEIL DE KARMINÉA</span>
           </div>
         </div>
       </div>
@@ -311,7 +312,6 @@
     const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     
     const getCardImg = (p) => p.skin2D ? p.skin2D : `https://minotar.net/armor/body/${p.pseudo}/150.png`;
-    // Fonction pour récupérer la tête du perso (ou l'image custom recadrée)
     const getHeadImg = (p) => p.skin2D ? p.skin2D : `https://minotar.net/helm/${p.pseudo}/100.png`;
 
     async function load() {
@@ -339,7 +339,6 @@
       const q = query.toLowerCase();
       
       const filtered = DATA.filter((p) => {
-        // MAJ : On recherche aussi par pays
         const ms = !q || 
                    p.pseudo.toLowerCase().includes(q) || 
                    p.nomRP.toLowerCase().includes(q) ||
@@ -370,6 +369,9 @@
             const i = DATA.indexOf(p);
             const s = st(p.statut);
             
+            // Affichage de la couronne sur le nom pour les conseillers
+            const badgeConseil = p.conseil ? '<span title="Membre du Conseil">👑</span>' : '';
+            
             return `<div class="card" onclick="openMod(${i})">
               <div class="c-skin">
                 <img src="${getCardImg(p)}" alt="${esc(p.pseudo)}" loading="lazy" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'"/>
@@ -377,7 +379,7 @@
               </div>
               <div class="c-body">
                 <div class="c-pseudo">${esc(p.pseudo)}</div>
-                <div class="c-nom">${esc(p.nomRP)}</div>
+                <div class="c-nom">${esc(p.nomRP)} ${badgeConseil}</div>
                 <div class="c-bio">« ${esc(p.accroche || "Aucune information.")} »</div>
               </div>
               <div class="c-foot">
@@ -390,11 +392,9 @@
           }).join("");
           
       } else {
-          // VUE SCHÉMA (ORGANIGRAMME AVEC BULLES)
           g.style.display = "none";
           t.style.display = "flex";
           
-          // Grouper par Pays, puis par Faction
           const treeMap = {};
           filtered.forEach(p => {
               let pays = p.pays || "Karminea";
@@ -411,26 +411,24 @@
               const factions = Object.keys(treeMap[pays]).sort();
               
               return `<div class="pays-section">
-                <!-- Bulle du pays -->
                 <div class="pays-bubble">${esc(pays)}</div>
                 
-                <!-- Liste des factions de ce pays -->
                 <div class="factions-row">
                     ${factions.map(faction => {
                         return `<div class="faction-col">
-                            <!-- Bulle de la faction -->
                             <div class="faction-bubble">${esc(faction)}</div>
                             
-                            <!-- Membres de la faction -->
                             <div class="faction-members">
                                 ${treeMap[pays][faction].map(p => {
                                     const i = DATA.indexOf(p);
                                     const s = st(p.statut);
+                                    const badgeConseil = p.conseil ? '👑' : '';
+                                    
                                     return `<div class="tree-node" onclick="openMod(${i})">
                                         <div class="tree-head-wrapper ${s.cls}">
                                            <img src="${getHeadImg(p)}" alt="${esc(p.pseudo)}" loading="lazy" onerror="this.src='https://minotar.net/helm/MHF_Steve/100.png'"/>
                                         </div>
-                                        <div class="tree-name">${esc(p.nomRP)}</div>
+                                        <div class="tree-name">${esc(p.nomRP)} ${badgeConseil}</div>
                                         <div class="tree-job">${esc(p.metier || "")}</div>
                                     </div>`;
                                 }).join("")}
@@ -485,6 +483,14 @@
       document.getElementById("mfac").textContent = p.faction ? "FACTION: " + p.faction : "CIVIL";
       document.getElementById("mmet").textContent = p.metier ? "MÉTIER: " + p.metier : "SANS PROFESSION";
       document.getElementById("mage").textContent = p.age ? "ÂGE: " + p.age : "ÂGE INCONNU";
+      
+      // MAJ : Afficher ou cacher le badge doré du Conseil
+      const consDiv = document.getElementById("mcons");
+      if(p.conseil) {
+          consDiv.style.display = "inline-block";
+      } else {
+          consDiv.style.display = "none";
+      }
 
       document.getElementById("ov").classList.add("open");
       document.body.style.overflow = "hidden";
