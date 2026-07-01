@@ -432,5 +432,24 @@
     "statut": "vivant",
     "accroche": "“Toute substance, dépendant de la dose peut aussi bien être un remède comme un poison. Moi je vais trouver tous les remèdes, pour ma petite soeur...”",
     "description": "Silar est un alchimiste de Sylvaris, il s’est juré de chercher de quoi guérir toutes les maladies possibles et imaginables. Il est obsédé par son objectif et peut être assez impulsif dans certaines de ses réactions. Son corps est parcouru de cicatrices et brûlures dues à ses expériences et sa maladresse, il refuse de les soigner car cela lui rappelle son objectif. Il a deux souhaits, réussir son objectif et la paix dans le monde."
+  },
+  {
+    "pseudo": "Ofzebendo",
+    "nomRP": "Blockba",
+    "age": "152 ans",
+    "faction": "Sylvaris",
+    "metier": "Artiste musical",
+    "statut": "vivant",
+    "accroche": "Mieux vaut avoir le cul entre deux chaises que deux chaises entre les culs",
+    "description": "Né au sein des forêts ancestrales elfiques, Blockba a grandi entouré des chants et des traditions musicales de son peuple, développant très tôt une passion pour les arts. Cependant, lorsqu’il découvrit l’existence des cultures humaines et de leurs formes d’expression inédites, sa curiosité le poussa à explorer ces influences étrangères. Là où d’autres voyaient un risque pour l’héritage elfique, Blockba y vit l’opportunité d’un renouveau. Déterminé à faire évoluer la musique de son peuple sans en trahir les racines, il se consacre aujourd’hui à fusionner les traditions elfiques avec les découvertes artistiques du monde moderne, dans l’espoir de créer une nouvelle ère musicale capable de rapprocher les cultures."
+  },
+  {
+    "pseudo": "shikarototo",
+    "nomRP": "Funeste",
+    "age": "34 ans",
+    "faction": "Sylvaris",
+    "metier": "Alchimiste",
+    "statut": "vivant",
+    "description": "Après avoir quitté Karminéa il fit serment d’allégeance à Sylvaris, il est réservé et peu bavard, il préfère observer et écouter. Il n’hésitera jamais à venir en aide à ceux qui en ont besoin. Il passe une partie de son temps à rechercher et expérimenter de nouvelles formules afin de créer des potions toujours plus efficaces."
   }
 ]
