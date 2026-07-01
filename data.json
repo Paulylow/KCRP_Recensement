@@ -362,5 +362,75 @@
     "statut": "vivant",
     "accroche": "Il n'y a pas de prix à la perfection, seulement une fin à la poursuite.",
     "description": "Hanmā est un Artisan, ingénieur, orfèvre, prothésiste, qui s'est perfectionné durant sa vie de vagabond. Fatigué de ses années sur les routes il s'est installé à Karminea pour usé de son savoir et aidé la ville et le progrès. Sa quête de connaissance technique est infini car il souhaite devenir le meilleur dans son domaine. C'est un bourreau de travail qui passera jour et nuit dans son atelier pour répondre au requête. Fervent défenseur des droits et surtout du bien être des travailleurs il s'est proposé comme conseiller ce qui à ce jour lui plait d'aider la population. Dans cette même continuité il propose aussi ses services de prothésiste de part sa forte expérience personnelle, il est par ailleurs spécialisé dans les bras artificielle. Père de famille et veuf il est très protecteur et méfiant mais essaye de plus en plus de s'ouvrir aux autres, son atelier est autant un havre de paix qu'une prison qui l'isole."
+  },
+  {
+    "pseudo": "Namas_",
+    "nomRP": "Monte Carlo",
+    "age": "30 ans",
+    "faction": "Karminea",
+    "metier": "Entrepreneur",
+    "statut": "vivant",
+    "accroche": "Vous voulez devenir riche ?",
+    "description": "Capitaliste, Multipropriétaire, Ingénieur, il n'a d'intérêt que pour le business"
+  },
+  {
+    "pseudo": "Sohaliaaa",
+    "nomRP": "Sohalia",
+    "age": "22 ans",
+    "faction": "Horace",
+    "metier": "Co-Directrice d’Horace Bank",
+    "statut": "disparu",
+    "accroche": "« Bonjour, bienvenue à Horace Bank, comment puis-je vous aider aujourd’hui ? » / « Coucou Xofyx ! »",
+    "description": "Une ambition aussi immense qu’illusoire, la banque semble être sa seule préoccupation. L’argent et le pouvoir ? Non. Une obsession presque désespérée pour la stabilité et la sécurité. Ces erreurs du passé lui ont beaucoup appris. Et sa gentillesse dissimule probablement de lourds secrets enfouis. Mais sont-ils vraiment enterrés ?"
+  },
+  {
+    "pseudo": "KC_Eagle",
+    "nomRP": "Trim Vaelor",
+    "age": "340 ans",
+    "faction": "Sylvaris",
+    "metier": "Sage, Membre du Haut Conseil de Sylvaris",
+    "statut": "vivant",
+    "accroche": "« Tant que les feuilles danseront sous les vents de Sylvaris, Trim Vaelor demeurera leur humble gardien. »",
+    "description": "Trim Vaelor est un elfe de sang pur âgé de 340 ans, Sage de Sylvaris et membre du Haut Conseil. Botaniste passionné, il consacre sa vie à protéger la forêt, préserver toute forme de vie et conseiller la Première Gardienne avec sagesse. D'un naturel calme, réfléchi et bienveillant, il privilégie toujours le dialogue à la violence. Marqué par la perte de sa mère, il porte en lui une profonde sensibilité qui nourrit son désir de préserver la vie à tout prix."
+  },
+  {
+    "pseudo": "Marsooo",
+    "nomRP": "Marso",
+    "age": "22 ans",
+    "faction": "Xyrus",
+    "metier": "Scientifique de la grande bibliothèque",
+    "statut": "vivant",
+    "accroche": "Vous avez besoin de cette stone ?",
+    "description": "Terré à Xyrus, il y étudie le nouveau monde, ne s'intéresse presque qu'à l'avancement de ses recherches mais garde une oreille sur les agissements de ses pairs dans les autres civilisations"
+  },
+  {
+    "pseudo": "Zeclipses",
+    "nomRP": "Eclipse Belazur",
+    "age": "19 ans",
+    "faction": "Karminea",
+    "metier": "RICHE",
+    "statut": "vivant",
+    "accroche": "Bonjour mon brave",
+    "description": "Fils héritier de la famille belazur, riche et fier de l'être il déteste les pauvres. Devenu totalement fou il cherche désespérément à se venger de sa famille qui la trahi"
+  },
+  {
+    "pseudo": "P_a_b_l_o_",
+    "nomRP": "Magnus",
+    "age": "40 ans (en équivalent Mandrill)",
+    "faction": "Karminea",
+    "metier": "Juge",
+    "statut": "vivant",
+    "accroche": "Je suis la justice",
+    "description": "Dernier survivant de sa famille de Mandrill; Magnus a subi des expérimentations pour développer son intellect. Il tente aujourd'hui de trouver sa place au sein d'un monde qui ne sera jamais réellement le sien."
+  },
+  {
+    "pseudo": "Manu_ryuu",
+    "nomRP": "Silar Valemor",
+    "age": "117 ans",
+    "faction": "Sylvaris",
+    "metier": "Alchimiste, chercheur",
+    "statut": "vivant",
+    "accroche": "“Toute substance, dépendant de la dose peut aussi bien être un remède comme un poison. Moi je vais trouver tous les remèdes, pour ma petite soeur...”",
+    "description": "Silar est un alchimiste de Sylvaris, il s’est juré de chercher de quoi guérir toutes les maladies possibles et imaginables. Il est obsédé par son objectif et peut être assez impulsif dans certaines de ses réactions. Son corps est parcouru de cicatrices et brûlures dues à ses expériences et sa maladresse, il refuse de les soigner car cela lui rappelle son objectif. Il a deux souhaits, réussir son objectif et la paix dans le monde."
   }
 ]
