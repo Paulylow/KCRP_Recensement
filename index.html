@@ -80,10 +80,17 @@
     .fb.active { border-color: var(--cyan); color: var(--cyan); background: rgba(0, 180, 216, 0.06); }
     .fb:hover { border-color: var(--black); color: var(--black); }
     
-    .sec-h { display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--black); padding-bottom: 9px; margin-bottom: 20px; }
+    .sec-h { display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--black); padding-bottom: 9px; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
     .sec-t { font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gray); }
-    .sec-c { font-family: "Clash Display", sans-serif; font-size: 21px; font-weight: 700; color: var(--cyan); letter-spacing: -0.02em; }
+    .sec-c { font-family: "Clash Display", sans-serif; font-size: 21px; font-weight: 700; color: var(--cyan); letter-spacing: -0.02em; margin-left: 12px; }
     
+    /* Boutons pour changer de vue (Grille / Organigramme) */
+    .view-toggles { display: flex; gap: 4px; }
+    .vt { font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border: 2px solid #ddd; background: transparent; cursor: pointer; color: var(--gray); transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+    .vt.active { background: var(--cyan); color: #000; border-color: var(--cyan); }
+    .vt:hover:not(.active) { border-color: var(--black); color: var(--black); }
+    
+    /* VUE GRILLE */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(245px, 1fr)); gap: 2px; background: var(--black); border: 2px solid var(--black); margin-bottom: 60px; }
     .card { background: #fff; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s; position: relative; overflow: hidden; }
     .card:hover { transform: translateY(-5px); z-index: 1; box-shadow: 0 14px 36px rgba(0, 0, 0, 0.14); }
@@ -103,6 +110,25 @@
     .c-bio { font-size: 13px; color: var(--gray); font-style: italic; line-height: 1.6; margin-top: 4px; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .c-foot { padding: 8px 16px; border-top: 1px solid #eee; font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #bbb; display: flex; justify-content: space-between; align-items: center; gap: 10px;}
     
+    /* VUE ARBORESCENCE / ORGANIGRAMME */
+    .tree-view { display: none; flex-direction: column; gap: 32px; margin-bottom: 60px; }
+    .faction-group { background: #fff; border: 2px solid var(--black); padding: 28px; border-radius: 4px; }
+    .faction-title { font-family: "Clash Display", sans-serif; font-size: 24px; font-weight: 700; color: var(--cyan); text-transform: uppercase; margin-bottom: 24px; text-align: center; letter-spacing: -0.02em; padding-bottom: 12px; border-bottom: 2px solid #eee; }
+    .faction-members { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+    .tree-node { width: 120px; text-align: center; cursor: pointer; transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); }
+    .tree-node:hover { transform: translateY(-5px); }
+    .tree-head-wrapper { width: 80px; height: 80px; margin: 0 auto 12px; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, #111, #1a2a3a); border: 4px solid var(--black); box-shadow: 0 8px 16px rgba(0,0,0,0.1); position: relative; }
+    .tree-head-wrapper img { width: 100%; height: 100%; object-fit: cover; object-position: top; image-rendering: pixelated; }
+    
+    /* Couleurs de bordure pour l'arborescence */
+    .tree-head-wrapper.sv { border-color: var(--green); }
+    .tree-head-wrapper.sm { border-color: var(--red); }
+    .tree-head-wrapper.sd { border-color: var(--orange); }
+    .tree-head-wrapper.si { border-color: #555; }
+    
+    .tree-name { font-family: "Clash Display", sans-serif; font-size: 15px; font-weight: 700; line-height: 1.1; margin-bottom: 4px; color: var(--black); }
+    .tree-job { font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
     .empty { text-align: center; padding: 52px 28px; background: #fff; border: 2px solid var(--black); margin-bottom: 44px; }
     .e-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.22; }
     .e-title { font-family: "Clash Display", sans-serif; font-size: 20px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
@@ -137,7 +163,6 @@
     .m-badge { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; padding: 4px 9px; display: inline-block; }
     
     .m-body { padding: 32px 28px; }
-    /* MAJ : Style de la citation dans le dossier */
     .m-quote { font-family: "Satoshi", sans-serif; font-size: 15px; font-style: italic; color: #444; background: rgba(0, 180, 216, 0.06); border-left: 4px solid var(--cyan); padding: 12px 16px; margin-bottom: 24px; border-radius: 0 4px 4px 0; }
     .m-lbl { font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
     .m-bio { font-size: 15px; color: #333; line-height: 1.8; text-align: justify; }
@@ -196,7 +221,6 @@
         <div class="sn" id="stat-m">—</div>
         <div class="sl">Décédés</div>
       </div>
-      <!-- MAJ : Ajout du compteur des disparus -->
       <div class="sdiv"></div>
       <div>
         <div class="sn" id="stat-d">—</div>
@@ -220,9 +244,24 @@
     </div>
 
     <div class="sec-h">
-      <span class="sec-t">Habitants recensés</span><span class="sec-c" id="count">—</span>
+      <div>
+        <span class="sec-t">Habitants recensés</span><span class="sec-c" id="count">—</span>
+      </div>
+      
+      <!-- MAJ : Boutons pour basculer la vue -->
+      <div class="view-toggles">
+        <button id="btn-grid" class="vt active" onclick="setView('grid')">📇 Grille</button>
+        <button id="btn-tree" class="vt" onclick="setView('tree')">🌳 Organigramme</button>
+      </div>
     </div>
+    
+    <!-- Vue 1: Grille classique -->
     <div id="grid" class="grid"></div>
+    
+    <!-- Vue 2: Organigramme (Arborescence) -->
+    <div id="tree-view" class="tree-view"></div>
+    
+    <!-- Aucun résultat -->
     <div id="empty" class="empty" style="display: none">
       <div class="e-icon">🔍</div>
       <div class="e-title">Aucun résultat</div>
@@ -260,9 +299,7 @@
       </div>
       
       <div class="m-body">
-        <!-- MAJ : Emplacement pour la citation dans le dossier -->
         <div class="m-quote" id="mqu"></div>
-        
         <div class="m-lbl">Rapport Détaillé</div>
         <div class="m-bio" id="mbi"></div>
       </div>
@@ -271,7 +308,7 @@
 
   <script>
     /* ── ÉTAT & CONFIG ── */
-    let DATA = [], filt = "tous", query = "";
+    let DATA = [], filt = "tous", query = "", currentView = "grid";
     let skinViewer = null;
 
     const ST = {
@@ -284,8 +321,11 @@
     const st = (s) => ST[s ? s.toLowerCase() : "inconnu"] || ST.inconnu;
     const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     
-    // Rendu 2D des skins sur la page d'accueil pour la performance
+    // Récupérer le corps en 2D pour la grille
     const getCardImg = (p) => p.skin2D ? p.skin2D : `https://minotar.net/armor/body/${p.pseudo}/150.png`;
+    
+    // Récupérer la tête pour l'organigramme (utilise l'image custom si elle existe)
+    const getHeadImg = (p) => p.skin2D ? p.skin2D : `https://minotar.net/helm/${p.pseudo}/100.png`;
 
     /* ── LOAD DATA ── */
     async function load() {
@@ -299,9 +339,18 @@
       stats();
     }
 
-    /* ── RENDER ACCUEIL ── */
+    /* ── CHANGEMENT DE VUE (GRILLE / ARBRE) ── */
+    function setView(view) {
+        currentView = view;
+        document.getElementById("btn-grid").classList.toggle("active", view === "grid");
+        document.getElementById("btn-tree").classList.toggle("active", view === "tree");
+        render();
+    }
+
+    /* ── RENDER PRINCIPAL ── */
     function render() {
       const g = document.getElementById("grid");
+      const t = document.getElementById("tree-view");
       const e = document.getElementById("empty");
       const q = query.toLowerCase();
       
@@ -320,35 +369,75 @@
       
       if (!filtered.length) {
         g.style.display = "none";
+        t.style.display = "none";
         e.style.display = "block";
         document.getElementById("esub").textContent = DATA.length === 0 ? "Aucun habitant recensé. Soyez le premier !" : "Aucun résultat pour cette recherche.";
         return;
       }
       
-      g.style.display = "grid";
       e.style.display = "none";
-      g.innerHTML = filtered.map((p) => {
-        const i = DATA.indexOf(p);
-        const s = st(p.statut);
-        
-        return `<div class="card" onclick="openMod(${i})">
-          <div class="c-skin">
-            <img src="${getCardImg(p)}" alt="${esc(p.pseudo)}" loading="lazy" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'"/>
-            <div class="c-status ${s.cls}">${s.lbl}</div>
-          </div>
-          <div class="c-body">
-            <div class="c-pseudo">${esc(p.pseudo)}</div>
-            <div class="c-nom">${esc(p.nomRP)}</div>
-            <div class="c-bio">« ${esc(p.accroche || "Aucune information.")} »</div>
-          </div>
-          <div class="c-foot">
-            <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 65%;">
-                ${esc(p.faction || "Civil")} • ${esc(p.metier || "Sans métier")}
-            </span>
-            <span style="color:#00b4d8; flex-shrink: 0;">Consulter →</span>
-          </div>
-        </div>`;
-      }).join("");
+
+      if (currentView === "grid") {
+          g.style.display = "grid";
+          t.style.display = "none";
+          
+          g.innerHTML = filtered.map((p) => {
+            const i = DATA.indexOf(p);
+            const s = st(p.statut);
+            
+            return `<div class="card" onclick="openMod(${i})">
+              <div class="c-skin">
+                <img src="${getCardImg(p)}" alt="${esc(p.pseudo)}" loading="lazy" onerror="this.src='https://minotar.net/armor/body/MHF_Steve/150.png'"/>
+                <div class="c-status ${s.cls}">${s.lbl}</div>
+              </div>
+              <div class="c-body">
+                <div class="c-pseudo">${esc(p.pseudo)}</div>
+                <div class="c-nom">${esc(p.nomRP)}</div>
+                <div class="c-bio">« ${esc(p.accroche || "Aucune information.")} »</div>
+              </div>
+              <div class="c-foot">
+                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 65%;">
+                    ${esc(p.faction || "Indépendant")} • ${esc(p.metier || "Sans métier")}
+                </span>
+                <span style="color:#00b4d8; flex-shrink: 0;">Consulter →</span>
+              </div>
+            </div>`;
+          }).join("");
+      } else {
+          g.style.display = "none";
+          t.style.display = "flex";
+          
+          // Grouper par Faction
+          const factionsMap = {};
+          filtered.forEach(p => {
+              let f = p.faction || "Sans faction / Indépendant";
+              if(!factionsMap[f]) factionsMap[f] = [];
+              factionsMap[f].push(p);
+          });
+          
+          // Trier les factions par ordre alphabétique
+          const sortedFactions = Object.keys(factionsMap).sort();
+          
+          t.innerHTML = sortedFactions.map(f => {
+              return `<div class="faction-group">
+                <div class="faction-title">${esc(f)}</div>
+                <div class="faction-members">
+                  ${factionsMap[f].map(p => {
+                      const i = DATA.indexOf(p);
+                      const s = st(p.statut);
+                      
+                      return `<div class="tree-node" onclick="openMod(${i})">
+                        <div class="tree-head-wrapper ${s.cls}">
+                           <img src="${getHeadImg(p)}" alt="${esc(p.pseudo)}" loading="lazy" onerror="this.src='https://minotar.net/helm/MHF_Steve/100.png'"/>
+                        </div>
+                        <div class="tree-name">${esc(p.nomRP)}</div>
+                        <div class="tree-job">${esc(p.metier || "")}</div>
+                      </div>`;
+                  }).join("")}
+                </div>
+              </div>`;
+          }).join("");
+      }
     }
 
     /* ── STATS ── */
@@ -356,7 +445,6 @@
       document.getElementById("stat-t").textContent = DATA.length;
       document.getElementById("stat-v").textContent = DATA.filter(p => p.statut === "vivant").length;
       document.getElementById("stat-m").textContent = DATA.filter(p => p.statut === "mort").length;
-      /* MAJ : Calcul du nombre de disparus */
       document.getElementById("stat-d").textContent = DATA.filter(p => p.statut === "disparu").length;
     }
 
@@ -377,12 +465,10 @@
       const p = DATA[i];
       const s = st(p.statut);
       
-      // Mise à jour des textes
       document.getElementById("mps").textContent = p.pseudo;
       document.getElementById("mno").textContent = p.nomRP;
       document.getElementById("mbi").textContent = p.description || "Aucune description détaillée disponible.";
       
-      // MAJ : Injection de la citation dans le dossier
       const quoteDiv = document.getElementById("mqu");
       if (p.accroche) {
           quoteDiv.textContent = "« " + p.accroche + " »";
@@ -399,13 +485,9 @@
       document.getElementById("mmet").textContent = p.metier ? "MÉTIER: " + p.metier : "SANS PROFESSION";
       document.getElementById("mage").textContent = p.age ? "ÂGE: " + p.age : "ÂGE INCONNU";
 
-      // Toujours ouvrir la page en premier
       document.getElementById("ov").classList.add("open");
       document.body.style.overflow = "hidden";
 
-      // ==========================================
-      // GÉNÉRATION SÉCURISÉE DU MODÈLE 3D OU 2D
-      // ==========================================
       const skinBox = document.getElementById("m-skinbox");
       skinBox.innerHTML = ""; 
       
