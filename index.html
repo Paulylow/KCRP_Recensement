@@ -84,13 +84,13 @@
     .sec-t { font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gray); }
     .sec-c { font-family: "Clash Display", sans-serif; font-size: 21px; font-weight: 700; color: var(--cyan); letter-spacing: -0.02em; margin-left: 12px; }
     
-    /* Boutons pour changer de vue (Grille / Organigramme) */
+    /* Boutons de vue */
     .view-toggles { display: flex; gap: 4px; }
     .vt { font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border: 2px solid #ddd; background: transparent; cursor: pointer; color: var(--gray); transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
     .vt.active { background: var(--cyan); color: #000; border-color: var(--cyan); }
     .vt:hover:not(.active) { border-color: var(--black); color: var(--black); }
     
-    /* VUE GRILLE */
+    /* VUE GRILLE CLASSIQUE */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(245px, 1fr)); gap: 2px; background: var(--black); border: 2px solid var(--black); margin-bottom: 60px; }
     .card { background: #fff; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s; position: relative; overflow: hidden; }
     .card:hover { transform: translateY(-5px); z-index: 1; box-shadow: 0 14px 36px rgba(0, 0, 0, 0.14); }
@@ -110,31 +110,37 @@
     .c-bio { font-size: 13px; color: var(--gray); font-style: italic; line-height: 1.6; margin-top: 4px; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .c-foot { padding: 8px 16px; border-top: 1px solid #eee; font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #bbb; display: flex; justify-content: space-between; align-items: center; gap: 10px;}
     
-    /* VUE ARBORESCENCE / ORGANIGRAMME */
-    .tree-view { display: none; flex-direction: column; gap: 32px; margin-bottom: 60px; }
-    .faction-group { background: #fff; border: 2px solid var(--black); padding: 28px; border-radius: 4px; }
-    .faction-title { font-family: "Clash Display", sans-serif; font-size: 24px; font-weight: 700; color: var(--cyan); text-transform: uppercase; margin-bottom: 24px; text-align: center; letter-spacing: -0.02em; padding-bottom: 12px; border-bottom: 2px solid #eee; }
-    .faction-members { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-    .tree-node { width: 120px; text-align: center; cursor: pointer; transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); }
+    /* VUE SCHÉMA / ORGANIGRAMME */
+    .tree-view { display: none; flex-direction: column; gap: 20px; margin-bottom: 60px; align-items: center; }
+    
+    .pays-section { margin-bottom: 70px; display: flex; flex-direction: column; align-items: center; width: 100%; }
+    .pays-bubble { background: var(--black); color: var(--cyan); font-family: "Clash Display", sans-serif; font-size: 26px; font-weight: 700; padding: 12px 36px; border-radius: 40px; border: 2px solid var(--cyan); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 10px 30px rgba(0, 180, 216, 0.15); z-index: 2; }
+    
+    .factions-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; width: 100%; }
+    .faction-col { background: #fff; padding: 24px 20px 20px; border-radius: 16px; border: 2px solid #ddd; position: relative; display: flex; flex-direction: column; align-items: center; width: auto; min-width: 280px; max-width: 100%; box-shadow: 0 8px 24px rgba(0,0,0,0.04); margin-top: 15px; }
+    .faction-bubble { background: var(--offwhite); color: var(--gray); font-family: "Barlow Condensed", sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 0.15em; padding: 6px 20px; border-radius: 20px; text-transform: uppercase; position: absolute; top: -16px; border: 2px solid #ddd; }
+    
+    .faction-members { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; width: 100%; margin-top: 10px; }
+    .tree-node { width: 110px; text-align: center; cursor: pointer; transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); }
     .tree-node:hover { transform: translateY(-5px); }
-    .tree-head-wrapper { width: 80px; height: 80px; margin: 0 auto 12px; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, #111, #1a2a3a); border: 4px solid var(--black); box-shadow: 0 8px 16px rgba(0,0,0,0.1); position: relative; }
+    
+    .tree-head-wrapper { width: 70px; height: 70px; margin: 0 auto 10px; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, #111, #1a2a3a); border: 3px solid var(--black); box-shadow: 0 6px 12px rgba(0,0,0,0.1); position: relative; }
     .tree-head-wrapper img { width: 100%; height: 100%; object-fit: cover; object-position: top; image-rendering: pixelated; }
     
-    /* Couleurs de bordure pour l'arborescence */
     .tree-head-wrapper.sv { border-color: var(--green); }
     .tree-head-wrapper.sm { border-color: var(--red); }
     .tree-head-wrapper.sd { border-color: var(--orange); }
     .tree-head-wrapper.si { border-color: #555; }
     
-    .tree-name { font-family: "Clash Display", sans-serif; font-size: 15px; font-weight: 700; line-height: 1.1; margin-bottom: 4px; color: var(--black); }
-    .tree-job { font-family: "Barlow Condensed", sans-serif; font-size: 11px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .tree-name { font-family: "Clash Display", sans-serif; font-size: 14px; font-weight: 700; line-height: 1.1; margin-bottom: 4px; color: var(--black); }
+    .tree-job { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-    .empty { text-align: center; padding: 52px 28px; background: #fff; border: 2px solid var(--black); margin-bottom: 44px; }
+    .empty { text-align: center; padding: 52px 28px; background: #fff; border: 2px solid var(--black); margin-bottom: 44px; width: 100%; }
     .e-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.22; }
     .e-title { font-family: "Clash Display", sans-serif; font-size: 20px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
     .e-sub { font-size: 13px; color: var(--gray); }
     
-    /* MODAL DOSSIER AVEC 3D INTERACTIVE */
+    /* MODAL DOSSIER */
     .overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.75); z-index: 9000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(4px); padding: 18px; }
     .overlay.open { opacity: 1; pointer-events: all; }
     .modal { background: #fff; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; transform: translateY(18px) scale(0.97); transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); position: relative; }
@@ -144,15 +150,7 @@
     .m-close { position: absolute; top: 11px; right: 13px; background: none; border: none; font-family: "Barlow Condensed", sans-serif; font-size: 17px; font-weight: 900; color: #555; cursor: pointer; transition: color 0.2s; }
     .m-close:hover { color: #fff; }
     
-    /* Style de la boite 3D */
-    .m-skinbox { 
-      background: linear-gradient(135deg, #111, #1a2a3a); 
-      height: 160px; 
-      display: flex; align-items: center; justify-content: center; 
-      border: 1px solid #222; 
-      overflow: hidden; 
-      cursor: grab;
-    }
+    .m-skinbox { background: linear-gradient(135deg, #111, #1a2a3a); height: 160px; display: flex; align-items: center; justify-content: center; border: 1px solid #222; overflow: hidden; cursor: grab; }
     .m-skinbox:active { cursor: grabbing; }
     .m-skinbox canvas { outline: none; }
     
@@ -232,7 +230,7 @@
   <div class="container">
     <div class="search-sec">
       <div class="search-bar">
-        <input id="si" type="text" placeholder="Pseudo, nom, faction, métier…" autocomplete="off" />
+        <input id="si" type="text" placeholder="Pseudo, nom, pays, faction, métier…" autocomplete="off" />
         <button onclick="doSearch()">Rechercher</button>
       </div>
       <div class="filters">
@@ -248,20 +246,15 @@
         <span class="sec-t">Habitants recensés</span><span class="sec-c" id="count">—</span>
       </div>
       
-      <!-- MAJ : Boutons pour basculer la vue -->
       <div class="view-toggles">
         <button id="btn-grid" class="vt active" onclick="setView('grid')">📇 Grille</button>
-        <button id="btn-tree" class="vt" onclick="setView('tree')">🌳 Organigramme</button>
+        <button id="btn-tree" class="vt" onclick="setView('tree')">🌳 Schéma</button>
       </div>
     </div>
     
-    <!-- Vue 1: Grille classique -->
     <div id="grid" class="grid"></div>
-    
-    <!-- Vue 2: Organigramme (Arborescence) -->
     <div id="tree-view" class="tree-view"></div>
     
-    <!-- Aucun résultat -->
     <div id="empty" class="empty" style="display: none">
       <div class="e-icon">🔍</div>
       <div class="e-title">Aucun résultat</div>
@@ -274,23 +267,20 @@
     <div class="f-copy" style="font-family:'Barlow Condensed'; font-size:10px; color:#444;">Vérité, courage, encre.</div>
   </footer>
 
-  <!-- MODAL DOSSIER -->
   <div class="overlay" id="ov" onclick="closeMod(event)">
     <div class="modal">
       <div class="m-head">
         <button class="m-close" onclick="closeModDirect()">✕</button>
         
-        <!-- Boite du skin 3D interactif -->
-        <div class="m-skinbox" id="m-skinbox" title="Cliquez et glissez pour tourner !">
-          <!-- Le canvas 3D sera injecté ici par JS -->
-        </div>
+        <div class="m-skinbox" id="m-skinbox" title="Cliquez et glissez pour tourner !"></div>
         
-        <!-- Informations -->
         <div>
           <div class="m-pseudo" id="mps"></div>
           <div class="m-nom" id="mno"></div>
           <div class="tags-row">
             <span class="m-badge" id="mba"></span>
+            <!-- MAJ : Ajout du badge Pays dans le dossier -->
+            <span class="m-badge" id="mpays" style="background:#00b4d8; color:#000;"></span>
             <span class="m-badge" id="mfac" style="background:#222; color:#fff;"></span>
             <span class="m-badge" id="mmet" style="background:#222; color:#fff;"></span>
             <span class="m-badge" id="mage" style="background:#222; color:#fff;"></span>
@@ -307,7 +297,6 @@
   </div>
 
   <script>
-    /* ── ÉTAT & CONFIG ── */
     let DATA = [], filt = "tous", query = "", currentView = "grid";
     let skinViewer = null;
 
@@ -321,13 +310,10 @@
     const st = (s) => ST[s ? s.toLowerCase() : "inconnu"] || ST.inconnu;
     const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     
-    // Récupérer le corps en 2D pour la grille
     const getCardImg = (p) => p.skin2D ? p.skin2D : `https://minotar.net/armor/body/${p.pseudo}/150.png`;
-    
-    // Récupérer la tête pour l'organigramme (utilise l'image custom si elle existe)
+    // Fonction pour récupérer la tête du perso (ou l'image custom recadrée)
     const getHeadImg = (p) => p.skin2D ? p.skin2D : `https://minotar.net/helm/${p.pseudo}/100.png`;
 
-    /* ── LOAD DATA ── */
     async function load() {
       try {
         const r = await fetch("data.json?t=" + Date.now());
@@ -339,7 +325,6 @@
       stats();
     }
 
-    /* ── CHANGEMENT DE VUE (GRILLE / ARBRE) ── */
     function setView(view) {
         currentView = view;
         document.getElementById("btn-grid").classList.toggle("active", view === "grid");
@@ -347,7 +332,6 @@
         render();
     }
 
-    /* ── RENDER PRINCIPAL ── */
     function render() {
       const g = document.getElementById("grid");
       const t = document.getElementById("tree-view");
@@ -355,11 +339,13 @@
       const q = query.toLowerCase();
       
       const filtered = DATA.filter((p) => {
+        // MAJ : On recherche aussi par pays
         const ms = !q || 
                    p.pseudo.toLowerCase().includes(q) || 
                    p.nomRP.toLowerCase().includes(q) ||
                    (p.faction && p.faction.toLowerCase().includes(q)) ||
-                   (p.metier && p.metier.toLowerCase().includes(q));
+                   (p.metier && p.metier.toLowerCase().includes(q)) ||
+                   (p.pays && p.pays.toLowerCase().includes(q));
                    
         const mf = filt === "tous" || p.statut === filt;
         return ms && mf;
@@ -371,7 +357,6 @@
         g.style.display = "none";
         t.style.display = "none";
         e.style.display = "block";
-        document.getElementById("esub").textContent = DATA.length === 0 ? "Aucun habitant recensé. Soyez le premier !" : "Aucun résultat pour cette recherche.";
         return;
       }
       
@@ -397,50 +382,67 @@
               </div>
               <div class="c-foot">
                 <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 65%;">
-                    ${esc(p.faction || "Indépendant")} • ${esc(p.metier || "Sans métier")}
+                    ${esc(p.pays || "Inconnu")} • ${esc(p.faction || "Indépendant")}
                 </span>
                 <span style="color:#00b4d8; flex-shrink: 0;">Consulter →</span>
               </div>
             </div>`;
           }).join("");
+          
       } else {
+          // VUE SCHÉMA (ORGANIGRAMME AVEC BULLES)
           g.style.display = "none";
           t.style.display = "flex";
           
-          // Grouper par Faction
-          const factionsMap = {};
+          // Grouper par Pays, puis par Faction
+          const treeMap = {};
           filtered.forEach(p => {
-              let f = p.faction || "Sans faction / Indépendant";
-              if(!factionsMap[f]) factionsMap[f] = [];
-              factionsMap[f].push(p);
+              let pays = p.pays || "Karminea";
+              let faction = p.faction || "Indépendant";
+              
+              if(!treeMap[pays]) treeMap[pays] = {};
+              if(!treeMap[pays][faction]) treeMap[pays][faction] = [];
+              treeMap[pays][faction].push(p);
           });
           
-          // Trier les factions par ordre alphabétique
-          const sortedFactions = Object.keys(factionsMap).sort();
+          const sortedPays = Object.keys(treeMap).sort();
           
-          t.innerHTML = sortedFactions.map(f => {
-              return `<div class="faction-group">
-                <div class="faction-title">${esc(f)}</div>
-                <div class="faction-members">
-                  ${factionsMap[f].map(p => {
-                      const i = DATA.indexOf(p);
-                      const s = st(p.statut);
-                      
-                      return `<div class="tree-node" onclick="openMod(${i})">
-                        <div class="tree-head-wrapper ${s.cls}">
-                           <img src="${getHeadImg(p)}" alt="${esc(p.pseudo)}" loading="lazy" onerror="this.src='https://minotar.net/helm/MHF_Steve/100.png'"/>
-                        </div>
-                        <div class="tree-name">${esc(p.nomRP)}</div>
-                        <div class="tree-job">${esc(p.metier || "")}</div>
-                      </div>`;
-                  }).join("")}
+          t.innerHTML = sortedPays.map(pays => {
+              const factions = Object.keys(treeMap[pays]).sort();
+              
+              return `<div class="pays-section">
+                <!-- Bulle du pays -->
+                <div class="pays-bubble">${esc(pays)}</div>
+                
+                <!-- Liste des factions de ce pays -->
+                <div class="factions-row">
+                    ${factions.map(faction => {
+                        return `<div class="faction-col">
+                            <!-- Bulle de la faction -->
+                            <div class="faction-bubble">${esc(faction)}</div>
+                            
+                            <!-- Membres de la faction -->
+                            <div class="faction-members">
+                                ${treeMap[pays][faction].map(p => {
+                                    const i = DATA.indexOf(p);
+                                    const s = st(p.statut);
+                                    return `<div class="tree-node" onclick="openMod(${i})">
+                                        <div class="tree-head-wrapper ${s.cls}">
+                                           <img src="${getHeadImg(p)}" alt="${esc(p.pseudo)}" loading="lazy" onerror="this.src='https://minotar.net/helm/MHF_Steve/100.png'"/>
+                                        </div>
+                                        <div class="tree-name">${esc(p.nomRP)}</div>
+                                        <div class="tree-job">${esc(p.metier || "")}</div>
+                                    </div>`;
+                                }).join("")}
+                            </div>
+                        </div>`;
+                    }).join("")}
                 </div>
               </div>`;
           }).join("");
       }
     }
 
-    /* ── STATS ── */
     function stats() {
       document.getElementById("stat-t").textContent = DATA.length;
       document.getElementById("stat-v").textContent = DATA.filter(p => p.statut === "vivant").length;
@@ -448,7 +450,6 @@
       document.getElementById("stat-d").textContent = DATA.filter(p => p.statut === "disparu").length;
     }
 
-    /* ── SEARCH & FILTER ── */
     function doSearch() { query = document.getElementById("si").value.trim(); render(); }
     document.getElementById("si").addEventListener("input", (e) => { query = e.target.value.trim(); render(); });
     document.getElementById("si").addEventListener("keydown", (e) => { if (e.key === "Enter") doSearch(); });
@@ -460,7 +461,6 @@
       render();
     }
 
-    /* ── MODAL & 3D SKIN ── */
     function openMod(i) {
       const p = DATA[i];
       const s = st(p.statut);
@@ -481,6 +481,7 @@
       b.textContent = s.lbl;
       b.setAttribute("style", s.sty + ";font-family:Barlow Condensed,sans-serif;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:4px 9px;display:inline-block");
       
+      document.getElementById("mpays").textContent = "PAYS: " + (p.pays ? p.pays.toUpperCase() : "INCONNU");
       document.getElementById("mfac").textContent = p.faction ? "FACTION: " + p.faction : "CIVIL";
       document.getElementById("mmet").textContent = p.metier ? "MÉTIER: " + p.metier : "SANS PROFESSION";
       document.getElementById("mage").textContent = p.age ? "ÂGE: " + p.age : "ÂGE INCONNU";
@@ -548,7 +549,6 @@
     }
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModDirect(); });
 
-    /* ── INIT ── */
     load();
   </script>
 </body>
