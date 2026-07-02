@@ -547,18 +547,6 @@
     "description": "Après la guerre, elle récupère les elfes abandonnés et blessés pour bâtir un nouveau royaume, Sylvaris. Ancienne princesse de son ancien royaume, elle décide de créer cette nouvelle cité afin de ne plus refaire les erreurs du passé et ne plus vivre cette oppression anti elfique. Elle souhaite que la paix règne ce monde."
   },
   {
-    "pseudo": "DavidMartinez",
-    "nomRP": "David Martinez",
-    "age": "Inconnu",
-    "pays": "Karminea",
-    "faction": "Civil",
-    "metier": "Conseiller",
-    "statut": "vivant",
-    "accroche": "En soutien d'Hector Lonpiff",
-    "description": "Élu au Conseil de Karminéa en soutien à Hector Lonpiff.",
-    "conseil": true
-  },
-  {
     "pseudo": "Flohobimos",
     "nomRP": "Kim Cannard",
     "age": "22 plumes",
@@ -579,5 +567,72 @@
     "statut": "vivant",
     "accroche": "Envoie 10 jetons de base",
     "description": "Ptit gars sans histoire arriver à Karminéa durant le crash de bateau, accro aux jeux d'argent/vices en tout genre, employé de Play Two mais petit à petit ses supérieurs et collègues l'abandonnent et Cooper se sent délaissé par tout ce qui se trouve sur l'île, maintenant, c'est juste devenu un ptit con qui essaye juste de s'amuser quel qu'en soit le prix, actuellement il pêche juste pour oublier les problèmes qui l'entoure."
+  },
+  {
+    "pseudo": "KCzuko",
+    "nomRP": "Eldenar Lunaris",
+    "age": "267 ans",
+    "pays": "Sylvaris",
+    "faction": "Sylvaris",
+    "metier": "Membre du Haut conseil de Sylvaris, Emissaire et garde de Dame Mina",
+    "statut": "vivant",
+    "accroche": "Mes respects",
+    "description": "Rescapé de guerre, Eldenar est prêt à tout pour sauver son peuple et Dame Mina. Sauvé par cette dernière après la guerre, il dédie sa vie à la protéger. De nature plutôt calme, il peut vite s'emporter si on s'en prend à son peuple. Eldenar porte une cicatrice à l'œil qui le ronge et lui rappelle son enfance sur les champs de bataille."
+  },
+  {
+    "pseudo": "Leart95",
+    "nomRP": "Frank McClane",
+    "age": "35 ans",
+    "pays": "Karminea",
+    "faction": "Civil",
+    "metier": "On sait pas trop il est militant, boulanger, même moi je sais pas",
+    "statut": "vivant",
+    "accroche": "Karminea au peuple !",
+    "description": "Historien de formation, Frank arrive à Karminea en souhaitant instauré le communisme afin de rendre le pouvoir au peuple et d'éliminer les privilèges. Il ne cache pas ses envies de révolution, même auprès des personnes qu'il souhaite voir périr et contre qui il complote. Il est roux, fan de Thomas Sankara, on peut le retrouver en costard ou en tenue militaire selon son humeur."
+  },
+  {
+    "pseudo": "Sadaps_",
+    "nomRP": "David Martinez",
+    "age": "24 ans",
+    "pays": "Karminea",
+    "faction": "Révo",
+    "metier": "Assistant de Hector Longpiff",
+    "statut": "vivant",
+    "accroche": "Mort aux riches",
+    "description": "Ancien révolutionnaire de l'armée d'Alan Leonhart, cherche a faire que tout le monde vive égalitairement, sans aucunes discriminations entre les gens d'en bas et les gens d'en haut, même si cela comprend de se salir les mains.",
+    "conseil": true
+  },
+  {
+    "pseudo": "KC_ClaudeLover",
+    "nomRP": "Claude",
+    "age": "40 ans",
+    "pays": "Karminea",
+    "faction": "Civil",
+    "metier": "Aubergiste",
+    "statut": "vivant",
+    "accroche": "Ici, on laisse ses histoires à la porte. On les reprend en partant.",
+    "description": "Aubergiste mystérieux, calme et amical. Borgne, remarquable à sa cicatrice sur le visage. Porte généralement un tablier. Sait écouter et tenir sa langue."
+  },
+  {
+    "pseudo": "RynxSama",
+    "nomRP": "RFC",
+    "age": "22 ans",
+    "pays": "Karminea",
+    "faction": "Civil",
+    "metier": "Chômeur",
+    "statut": "vivant",
+    "accroche": "Explique ? Nan mais en gros Luden...",
+    "description": "RFC, parfois rabaddon ou encore goredrinker, est un jeune homme name-fluid. Il vagabonde de part et d'autres dans le village. Est neutre et est ami avec tout le monde."
+  },
+  {
+    "pseudo": "MoonLyght01",
+    "nomRP": "Diane Beaumanoir-Belazur",
+    "age": "21 ans",
+    "pays": "Karminea",
+    "faction": "Familles Belazur & Beaumanoir",
+    "metier": "Juge / Écrivaine / Styliste à ses heures perdues",
+    "statut": "vivant",
+    "accroche": "La moquerie est souvent indigence d’esprit",
+    "description": "Diane est la cadette de l'ancien Patriarche de la famille Beaumanoir. L'illustre famille Beaumanoir était une noble famille française reconnue pour ses qualités dans la couture et l'ingénierie, transmise de génération en génération, s'occupant d'un large fief et appréciée de ses compères, bien que mise à distance de par les rumeurs courant sur l'origine de leurs cornes. La famille Beaumanoir était réputée pour être droite et appliquée dans son travail mais froide et vigilante à premier abord. Mais si l'on se tient loin des apparences, en apprenant à les connaitre, Les Beaumanoir étaient de braves gens bien qu'en marge de la société moderne. Pour autant que certains les qualifieront de fous toute leur vie à tort ou à raison. La famille Beaumanoir pour autant ne semble pas avoir survécu à la traversée, seule, Nestor et son cousin Georges sont revenus, Diane étant de la branche principale prend alors le titre de Matriarche qui était alors inoccupée. Diane, en plus de son éducation, a été touchée par la passion de la botanique par sa tante qui l'a suivie jusqu'à aujourd'hui. C'est par ailleurs elle qui s'occupe de la serre et des jardins du domaine désormais, elle apprécie aussi mener des recherches sur certaines espèces et les recenser dans des livres à leur sujet. Comme la plupart de sa famille, Diane s'intéresse à de nombreuses choses et essaye d'en apprendre toujours plus sur ses sujets favoris. Bien que le statut lui soit important, la connaissance et la force de travail sont des qualités reconnues chez les Beaumanoir. Elle a grandi avec sa mère et son père s'occupant majoritairement de l'éducation de son frère aîné, a pris pour figure paternelle Nestor en majorité qui s'occupait principalement de Diane lorsqu'elle cherchait à voir son père. Elle est aujourd'hui toujours très dépendante de lui dans ses choix et ses décisions, bien qu'elle veuille affirmer sa place désormais en tant qu'héritière de la famille. Depuis son mariage et ses nombreuses séances de thérapie, Diane semble s'ouvrir de plus en plus aux idées modernes malgré son habitude à la vieille époque. Diane aspire à devenir une personne meilleure (celle que Pablo préfèrera surtout), en restant digne de son rang évidemment, mais en montrant une pointe de conciliation avec le peuple."
   }
 ]
